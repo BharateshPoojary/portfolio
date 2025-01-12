@@ -8,7 +8,7 @@ const navbar: React.FC = () => {
   console.log(isSidebarOpen);
   return (
     <div className="">
-      <nav className="md:block hidden sticky ">
+      <nav className="md:block hidden relative">
         <ul className=" flex justify-center space-x-20 text-1xl font-bold">
           <li>About</li>
           <li>Skills</li>
