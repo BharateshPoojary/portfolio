@@ -1,15 +1,24 @@
-import Image from "next/image";
-import Squares from "@/Squares/Squares";
+"use client";
+import Navbar from "@/components/Navbar";
+import { useSidebarStore } from "@/store/sidebarStore";
 export default function Home() {
+  const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Squares
-        speed={0.5}
-        squareSize={20}
-        direction="diagonal" // up, down, left, right, diagonal
-        borderColor="#fff"
-        hoverFillColor="#222"
-      />
+    <div className="py-5 px-4 font-[family-name:var(--font-geist-sans)]">
+      <Navbar />
+      <div
+        className={` relative px-4 py-5 md:px-48 md:py-20  ${
+          isSidebarOpen ? "blur-md " : "blur-none"
+        }`}
+      >
+        <div className="grid grid-cols-2">
+          <h3 className="text-4xl font-bold">
+            <span className="text-6xl">Bharatesh here,</span>a Full Stack
+            Developer passionate about developing web applicatons using MERN
+            stack.
+          </h3>
+        </div>
+      </div>
     </div>
   );
 }
