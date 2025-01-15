@@ -10,12 +10,11 @@ const Reveal = ({ children, width = "fit-content" }: Props) => {
   const Revealref = useRef(null);
   const isInView = useInView(Revealref, { once: true });
   const mainControl = useAnimation();
-  const slideControl = useAnimation();
+
   useEffect(() => {
     // console.log(isInView);
     if (isInView) {
       mainControl.start("visible");
-      slideControl.start("visible");
     }
   }, [isInView]);
   return (

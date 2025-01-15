@@ -4,7 +4,7 @@ import { useSidebarStore } from "@/store/sidebarStore";
 import Reveal from "./reveal";
 import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-
+import Image from "@/components/Image";
 export default function Home() {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   const Slideref = useRef(null);
@@ -52,6 +52,7 @@ export default function Home() {
               a Full Stack Developer passionate about developing web
               applications using MERN stack.
             </h3>
+            <Image />
           </div>
         </div>
       </Reveal>
