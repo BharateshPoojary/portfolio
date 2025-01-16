@@ -25,8 +25,8 @@ export default function Home() {
             isSidebarOpen ? "blur-md " : "blur-none"
           }`}
         >
-          <div className="grid md:grid-cols-2 sm:grid-cols-1">
-            <h3 className="text-4xl font-bold relative" ref={Slideref}>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <h3 className="text-4xl font-bold relative md:w-1/2" ref={Slideref}>
               <motion.div
                 variants={{
                   hidden: { left: 0 },
@@ -46,7 +46,7 @@ export default function Home() {
                   zIndex: 20,
                 }}
               />
-              <span className="text-6xl relative">
+              <span className="text-6xl relative ">
                 Hi, I am Bharatesh Poojary
               </span>
               a Full Stack Developer passionate about developing web

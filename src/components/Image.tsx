@@ -4,9 +4,9 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GUI } from "three/addons/libs/lil-gui.module.min.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-// import facebook from "./facebook.jpg";
 
 const ThreeJsExample: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const guiRef = useRef<GUI | null>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -18,17 +18,22 @@ const ThreeJsExample: React.FC = () => {
     offsetY: 0,
     repeatX: 0.25,
     repeatY: 0.25,
-    rotation: Math.PI / 4, // positive is counterclockwise
+    rotation: Math.PI / 4,
     centerX: 0.5,
     centerY: 0.5,
   };
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     // Renderer setup
     const renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    renderer.setSize(
+      containerRef.current.clientWidth,
+      containerRef.current.clientHeight
+    );
+    containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     // Scene setup
@@ -39,7 +44,7 @@ const ThreeJsExample: React.FC = () => {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       40,
-      window.innerWidth / window.innerHeight,
+      containerRef.current.clientWidth / containerRef.current.clientHeight,
       1,
       1000
     );
@@ -56,21 +61,18 @@ const ThreeJsExample: React.FC = () => {
 
     // Geometry and texture setup
     const geometry = new THREE.BoxGeometry(10, 10, 10);
-
     new THREE.TextureLoader().load("/Bharat.jpg", (texture) => {
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
       texture.colorSpace = THREE.SRGBColorSpace;
 
       const material = new THREE.MeshBasicMaterial({ map: texture });
-
       const mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
       meshRef.current = mesh;
 
       updateUvTransform();
 
-      // Initialize GUI
       const gui = new GUI();
       gui
         .add(API, "offsetX", 0.0, 1.0)
@@ -107,9 +109,10 @@ const ThreeJsExample: React.FC = () => {
 
     const onWindowResize = () => {
       if (!camera || !renderer) return;
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const { clientWidth, clientHeight } = containerRef.current!;
+      camera.aspect = clientWidth / clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(clientWidth, clientHeight);
       render();
     };
 
@@ -129,47 +132,28 @@ const ThreeJsExample: React.FC = () => {
 
   const updateUvTransform = () => {
     if (!meshRef.current) return;
-    if (meshRef.current) {
-      const material = meshRef.current.material;
-
-      // Check if material is an array or a single material
-      if (Array.isArray(material)) {
-        // Handle array of materials (if needed)
-        console.warn("Material is an array. Handle accordingly.");
-        return;
-      }
-      // Check if the material has a 'map' property
-      if (
-        material instanceof THREE.MeshStandardMaterial ||
-        material instanceof THREE.MeshBasicMaterial
-      ) {
-        const texture = material.map;
-        if (!texture) return;
-
-        if (texture.matrixAutoUpdate === true) {
-          texture.offset.set(API.offsetX, API.offsetY);
-          texture.repeat.set(API.repeatX, API.repeatY);
-          texture.center.set(API.centerX, API.centerY);
-          texture.rotation = API.rotation; // rotation is around center
-        } else {
-          texture.matrix
-            .identity()
-            .translate(-API.centerX, -API.centerY)
-            .rotate(API.rotation) // Rotation precedes scaling
-            .scale(API.repeatX, API.repeatY)
-            .translate(API.centerX, API.centerY)
-            .translate(API.offsetX, API.offsetY);
-        }
-        // Do something with the texture
-        console.log("Texture found:", texture);
-      } else {
-        console.warn("Material does not have a map property.");
-      }
-
+    const material = meshRef.current.material;
+    if (
+      material instanceof THREE.MeshBasicMaterial ||
+      material instanceof THREE.MeshStandardMaterial
+    ) {
+      const texture = material.map;
+      if (!texture) return;
+      texture.offset.set(API.offsetX, API.offsetY);
+      texture.repeat.set(API.repeatX, API.repeatY);
+      texture.center.set(API.centerX, API.centerY);
+      texture.rotation = API.rotation;
       render();
     }
   };
-  return null; // No direct JSX content since Three.js operates on the DOM
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "300px", height: "300px", border: "1px solid black" }}
+      className="md:w-1/2 md:self-end"
+    />
+  );
 };
 
 export default ThreeJsExample;
