@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import * as THREE from "three";
-import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+import * as THREE from "three"; //THREE gives access to the core library for building the 3D scene.
+import { GUI } from "three/addons/libs/lil-gui.module.min.js"; //t provides a simple interface for developers to tweak and control parameters (like object position, scale, rotation, colors, etc.) interactively during development.
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+//OrbitControls is a control utility for three.js that allows the user to orbit around an object using mouse or touch gestures. It’s commonly used to navigate 3D scenes in an intuitive manner.
 
 const ThreeJsExample: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const guiRef = useRef<GUI | null>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const meshRef = useRef<THREE.Mesh | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null); //This allows the three.js renderer to render the scene inside this specific DOM element.
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null); //The WebGLRenderer is responsible for rendering the 3D scene.
+  const guiRef = useRef<GUI | null>(null); //The GUI instance allows interactive controls to tweak parameters of the scene, objects, or camera dynamically.
+  const sceneRef = useRef<THREE.Scene | null>(null); //The Scene is the root container for all 3D objects, lights, and cameras in the three.js setup.
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null); //The PerspectiveCamera defines how the 3D scene is projected onto the 2D canvas (field of view, aspect ratio, near/far planes).
+  const meshRef = useRef<THREE.Mesh | null>(null); //A Mesh is a combination of a Geometry (shape) and Material (appearance) used to render a visible object in the scene.
 
   const API = {
     offsetX: 0,
@@ -28,21 +29,28 @@ const ThreeJsExample: React.FC = () => {
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer();
+    //Creates a new instance of the WebGLRenderer class.
+    //The WebGLRenderer is responsible for rendering the 3D scene onto a canvas using WebGL (Web Graphics Library), which is a low-level graphics API for rendering 2D and 3D graphics in the browser.
     renderer.setPixelRatio(window.devicePixelRatio);
+    //Sets the pixel ratio of the renderer to match the device’s pixel density.
+    //Ensures the rendered output looks crisp on high-DPI displays (like Retina screens).
     renderer.setSize(
-      containerRef.current.clientWidth,
-      containerRef.current.clientHeight
+      containerRef.current.clientWidth, //The width of the container <div> element in pixels.
+      containerRef.current.clientHeight //The height of the container <div> element in pixels.
     );
-    containerRef.current.appendChild(renderer.domElement);
+    //Sets the size of the rendering canvas to match the dimensions of the container element.
+    containerRef.current.appendChild(renderer.domElement); //Appends the renderer.domElement (the WebGL canvas element) to the container <div> referenced by containerRef.
     rendererRef.current = renderer;
-
+    //Stores the renderer instance in the rendererRef useRef hook. so that it persists across all components
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
-    sceneRef.current = scene;
+    //Creates a new instance of the Scene class.
+    //The Scene is the main container for all 3D objects, lights, cameras, and other elements in the three.js application.It acts as the "world" where everything in the 3D environment is placed.
+    scene.background = new THREE.Color(0xffffff); //ets the background color of the scene to white (0xffffff).
+    sceneRef.current = scene; //Stores the scene instance in the sceneRef useRef hook
 
     // Camera setup
-    const camera = new THREE.PerspectiveCamera(
+    const camera = new THREE.PerspectiveCamera( //Creates a new instance of a PerspectiveCamera with specific parameters.
       40,
       containerRef.current.clientWidth / containerRef.current.clientHeight,
       1,
