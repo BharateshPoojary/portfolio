@@ -46,26 +46,34 @@ const ThreeJsExample: React.FC = () => {
     const scene = new THREE.Scene();
     //Creates a new instance of the Scene class.
     //The Scene is the main container for all 3D objects, lights, cameras, and other elements in the three.js application.It acts as the "world" where everything in the 3D environment is placed.
-    scene.background = new THREE.Color(0xffffff); //ets the background color of the scene to white (0xffffff).
+    scene.background = new THREE.Color(0xffffff); //sets the background color of the scene to white (0xffffff).
     sceneRef.current = scene; //Stores the scene instance in the sceneRef useRef hook
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera( //Creates a new instance of a PerspectiveCamera with specific parameters.
-      40,
+      40,//The field of view (FOV) in degrees. It defines how wide the camera's view angle is. A smaller value zooms in, while a larger value zooms out.
       containerRef.current.clientWidth / containerRef.current.clientHeight,
-      1,
-      1000
+      //The aspect ratio, which is the width-to-height ratio of the camera's view. This ensures the scene looks correct without distortion. 
+      /**Let’s say your container is 800px wide and 600px tall (800/600=1.33 800/600=1.33), but you use an aspect ratio of 2.0 instead.The scene will be stretched horizontally because the camera thinks it needs to render for a much wider viewport than what exists. This calculates the actual width-to-height ratio of the containerRef (likely a DOM element like a <div>).
+      The calculated aspect ratio ensures the camera’s view matches the proportions of the container, maintaining proper scaling and avoiding distortion.*/
+      1,//If the near clipping plane is set to 1, an object at a distance of 0.5 from the camera will not be visible.
+      1000//If the far clipping plane is set to 1000, objects farther than 1000 units away from the camera will not be rendered.
     );
-    camera.position.set(10, 15, 25);
-    scene.add(camera);
-    cameraRef.current = camera;
+    camera.position.set(5, 15, 18);//Sets the position of the camera in the 3D space.(x,y,z) coordinate
+    //The X-coordinate, determining how far the camera is moved horizontally.
+    //The Y-coordinate, determining how far the camera is moved vertically.
+    //The Z-coordinate, determining how far the camera is moved in depth (closer to or farther from the objects in the scene).
+    scene.add(camera);//Adds the camera to the scene.
+    cameraRef.current = camera;//cameraRef is likely a React useRef object, which is used to hold a reference to the camera instance.
 
     // OrbitControls setup
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.addEventListener("change", render);
-    controls.minDistance = 20;
-    controls.maxDistance = 50;
-    controls.maxPolarAngle = Math.PI / 2;
+    //Creates an instance of OrbitControls, which enables the user to orbit around, zoom in/out, and pan the camera interactively.This control is tied to the camera (the camera to be controlled) and renderer.domElement (the DOM element where the scene is rendered, typically a <canvas>).
+    controls.addEventListener("change", render);//Adds an event listener that triggers the render function whenever the camera's position or orientation changes due to user interaction.
+
+    controls.minDistance = 20;//Sets the minimum zoom distance for the camera. This prevents the user from zooming too close to the target point of the controls Prevents users from zooming too far into objects, which could cause visual artifacts or disorientation.
+    controls.maxDistance = 50;//Sets the maximum zoom distance for the camera. This prevents the user from zooming too far away from the target point.
+    controls.maxPolarAngle = Math.PI;
 
     // Geometry and texture setup
     const geometry = new THREE.BoxGeometry(10, 10, 10);
