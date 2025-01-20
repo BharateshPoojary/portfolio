@@ -25,33 +25,36 @@ export default function Home() {
             isSidebarOpen ? "blur-md " : "blur-none"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <h3 className="text-4xl font-bold relative md:w-1/2" ref={Slideref}>
-              <motion.div
-                variants={{
-                  hidden: { left: 0 },
-                  visible: { left: "100%" },
-                }}
-                initial="hidden"
-                animate={slideControl}
-                transition={{ duration: 0.5, ease: "easeIn" }}
-                style={{
-                  position: "absolute",
-                  top: 4,
-                  bottom: 4,
-                  left: 0,
-                  right: 0,
-                  backdropFilter: "blur(10px)", // Apply blur effect
-                  background: "white", // Semi-transparent black
-                  zIndex: 20,
-                }}
-              />
-              <span className="text-6xl relative ">
-                Hi, I am Bharatesh Poojary
-              </span>
-              a Full Stack Developer passionate about developing web
-              applications using MERN stack.
-            </h3>
+          <div className="flex flex-col md:flex-row justify-between items-center max-w-full">
+            <motion.div
+              variants={{
+                hidden: { left: 0 },
+                visible: { left: "100%" },
+              }}
+              initial="hidden"
+              animate={slideControl}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+              style={{
+                position: "absolute",
+                top: 4,
+                bottom: 4,
+                left: 0,
+                right: 0,
+                backdropFilter: "blur(10px)", // Apply blur effect
+                background: "white", // Semi-transparent black
+                zIndex: 20,
+              }}
+            />
+            <div className="flex flex-col md:w-7/12">
+              <h2 className="text-6xl relative ">Hi, I am Bharatesh Poojary</h2>
+              <h3
+                className="text-4xl font-bold relative md:w-1/2"
+                ref={Slideref}
+              >
+                I am a Full Stack Developer passionate about developing web
+                applications using MERN stack.
+              </h3>
+            </div>
             <Image />
           </div>
         </div>

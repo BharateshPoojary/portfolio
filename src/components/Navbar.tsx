@@ -7,7 +7,7 @@ const navbar: React.FC = () => {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   console.log(isSidebarOpen);
   return (
-    <div className="">
+    <div>
       <nav className="md:block hidden relative">
         <ul className=" flex justify-center space-x-20 text-1xl font-bold">
           <li>About</li>
