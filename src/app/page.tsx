@@ -20,8 +20,8 @@ export default function Home() {
             isSidebarOpen ? "blur-md " : "blur-none"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center max-w-full">
-            <div className="flex flex-col md:w-7/12">
+          <div className="flex flex-col md:flex-row justify-between items-center max-w-max">
+            <div className="flex flex-col md:w-7/12 my-2">
               <h2 className="text-6xl relative ">Hi, I am Bharatesh Poojary</h2>
               <h3
                 className="text-4xl font-bold relative md:w-1/2"
@@ -33,8 +33,8 @@ export default function Home() {
             </div>
             <Image />
           </div>
+          <Card />
         </div>
-        <Card />
       </Reveal>
     </div>
   );

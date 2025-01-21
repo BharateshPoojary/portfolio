@@ -1,15 +1,29 @@
 "use client";
 import { useSidebarStore } from "@/store/sidebarStore";
-import React from "react";
+import React, { useEffect } from "react";
 
 const navbar: React.FC = () => {
   const toggleSidebar = useSidebarStore((state) => state.toggleSidebar);
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
+  useEffect(() => {
+    // Disable scrolling when the sidebar is open
+    if (isSidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = ""; // Re-enable scrolling
+    }
+
+    // Cleanup function to reset overflow on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen]);
+
   console.log(isSidebarOpen);
   return (
     <div>
       <nav className="md:block hidden relative ">
-        <ul className=" flex justify-center space-x-28 text-1xl font-bold fixed top-0 left-0 py-2 w-full h-12 z-50 backdrop-blur bg-white/30 ">
+        <ul className=" flex justify-center md:space-x-20 lg:space-x-32 text-2xl font-bold fixed top-0 left-0 py-4 w-full h-12 z-50 backdrop-blur bg-white/30 ">
           <li className="cursor-pointer">About</li>
           <li className="cursor-pointer">Skills</li>
           <li className="cursor-pointer">Experience</li>
@@ -44,11 +58,11 @@ const navbar: React.FC = () => {
         } transition-transform duration-300 ease-in-out z-30`}
       >
         <ul className="mt-8 space-y-4 text-xl font-semibold text-center ">
-          <li>About</li>
-          <li>Skills</li>
-          <li>Experience</li>
-          <li>Projects</li>
-          <li>Education</li>
+          <li className="cursor-pointer">About</li>
+          <li className="cursor-pointer">Skills</li>
+          <li className="cursor-pointer">Experience</li>
+          <li className="cursor-pointer">Projects</li>
+          <li className="cursor-pointer">Education</li>
         </ul>
       </div>
       {isSidebarOpen && (
