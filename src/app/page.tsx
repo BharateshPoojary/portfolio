@@ -1,50 +1,26 @@
 "use client";
 import Navbar from "@/components/Navbar";
+
 import { useSidebarStore } from "@/store/sidebarStore";
 import Reveal from "./reveal";
-import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import React, { useRef } from "react";
+
 import Image from "@/components/Image";
+import Card from "@/components/CardComp";
 export default function Home() {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   const Slideref = useRef(null);
-  const isInView = useInView(Slideref, { once: true });
-  const slideControl = useAnimation();
-  useEffect(() => {
-    // console.log(isInView);
-    if (isInView) {
-      slideControl.start("visible");
-    }
-  }, [isInView]);
+
   return (
     <div className="py-5 px-4 font-[family-name:var(--font-geist-sans)]">
       <Navbar />
       <Reveal>
         <div
-          className={` relative px-5 py-5 md:px-20 md:py-20  ${
+          className={` relative px-5 py-5 md:px-16 md:py-16  ${
             isSidebarOpen ? "blur-md " : "blur-none"
           }`}
         >
           <div className="flex flex-col md:flex-row justify-between items-center max-w-full">
-            <motion.div
-              variants={{
-                hidden: { left: 0 },
-                visible: { left: "100%" },
-              }}
-              initial="hidden"
-              animate={slideControl}
-              transition={{ duration: 0.5, ease: "easeIn" }}
-              style={{
-                position: "absolute",
-                top: 4,
-                bottom: 4,
-                left: 0,
-                right: 0,
-                backdropFilter: "blur(10px)", // Apply blur effect
-                background: "white", // Semi-transparent black
-                zIndex: 20,
-              }}
-            />
             <div className="flex flex-col md:w-7/12">
               <h2 className="text-6xl relative ">Hi, I am Bharatesh Poojary</h2>
               <h3
@@ -58,6 +34,7 @@ export default function Home() {
             <Image />
           </div>
         </div>
+        <Card />
       </Reveal>
     </div>
   );

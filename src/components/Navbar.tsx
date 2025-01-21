@@ -8,16 +8,16 @@ const navbar: React.FC = () => {
   console.log(isSidebarOpen);
   return (
     <div>
-      <nav className="md:block hidden relative">
-        <ul className=" flex justify-center space-x-20 text-1xl font-bold">
-          <li>About</li>
-          <li>Skills</li>
-          <li>Experience</li>
-          <li>Projects</li>
-          <li>Education</li>
+      <nav className="md:block hidden relative ">
+        <ul className=" flex justify-center space-x-28 text-1xl font-bold fixed top-0 left-0 py-2 w-full h-12 z-50 backdrop-blur bg-white/30 ">
+          <li className="cursor-pointer">About</li>
+          <li className="cursor-pointer">Skills</li>
+          <li className="cursor-pointer">Experience</li>
+          <li className="cursor-pointer">Projects</li>
+          <li className="cursor-pointer">Education</li>
         </ul>
       </nav>
-      <div className="flex justify-end">
+      <div className="flex justify-end fixed top-4  right-6 w-full z-50">
         <div className="block md:hidden ">
           <button
             type="button"

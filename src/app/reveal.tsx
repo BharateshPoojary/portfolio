@@ -6,14 +6,16 @@ interface Props {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
 }
-const Reveal = ({ children, width = "fit-content" }: Props) => {
+const Reveal = ({ children }: Props) => {
   const Revealref = useRef(null);
   const isInView = useInView(Revealref, { once: true });
   const mainControl = useAnimation();
+  const slideControl = useAnimation();
 
   useEffect(() => {
     // console.log(isInView);
     if (isInView) {
+      slideControl.start("visible");
       mainControl.start("visible");
     }
   }, [isInView]);
@@ -26,8 +28,27 @@ const Reveal = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={mainControl}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{ duration: 0.8, delay: 0.25 }}
       >
+        <motion.div
+          variants={{
+            hidden: { left: 0 },
+            visible: { left: "100%" },
+          }}
+          initial="hidden"
+          animate={slideControl}
+          transition={{ duration: 0.5, ease: "easeIn" }}
+          style={{
+            position: "absolute",
+            top: 4,
+            bottom: 4,
+            left: 0,
+            right: 0,
+            backdropFilter: "blur(10px)", // Apply blur effect
+            background: "white", // Semi-transparent black
+            zIndex: 20,
+          }}
+        />
         {children}
       </motion.div>
     </div>
