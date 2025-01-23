@@ -23,7 +23,7 @@ const Reveal = ({ children }: Props) => {
     <div style={{ position: "relative", overflow: "hidden" }} ref={Revealref}>
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 35 },
+          hidden: { opacity: 0, y: 15 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"

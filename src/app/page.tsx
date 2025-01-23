@@ -14,7 +14,7 @@ export default function Home() {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   const Slideref = useRef(null);
   useEffect(() => {
-    const titles = gsap.utils.toArray(".h2") as HTMLElement[];
+    const titles = gsap.utils.toArray(".text-animation") as HTMLElement[];
     console.log(titles);
     const timeline = gsap.timeline({
       repeat: -1,
@@ -51,13 +51,17 @@ export default function Home() {
             isSidebarOpen ? "blur-md " : "blur-none"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center max-w-max">
-            <div className="flex flex-col md:w-7/12 my-2">
-              <div className="text-wrapper text-6xl mb-2 ">
-                <h2 className="h2">Hi,I am Bharatesh Poojary</h2>
-                <h2 className="h2"> I am a Full Stack Developer</h2>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex flex-col md:w-7/12 my-10">
+              <div className="w-full my-2">
+                <h2 className="max-[460px]:text-xl text-3xl   text-animation md:text-4xl font-medium ">
+                  Hi,I am Bharatesh Poojary
+                </h2>
+                <h2 className=" max-[460px]:text-xl text-3xl  text-animation md:text-4xl font-medium  text-wrapper">
+                  I am a Full Stack Developer
+                </h2>
               </div>
-              <h3 className="text-4xl font-bold md:w-1/2 mt-5" ref={Slideref}>
+              <h3 className="text-4xl font-bold md:w-1/2 " ref={Slideref}>
                 passionate about developing web applications using MERN stack.
               </h3>
             </div>

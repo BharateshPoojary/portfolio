@@ -22,7 +22,7 @@ const navbar: React.FC = () => {
   console.log(isSidebarOpen);
   return (
     <div>
-      <nav className="md:block hidden relative ">
+      <nav className="md:block hidden ">
         <ul className=" flex justify-center md:space-x-20 lg:space-x-32 text-2xl font-bold fixed top-0 left-0 py-4 w-full h-12 z-50 backdrop-blur bg-white/30 ">
           <li className="cursor-pointer">About</li>
           <li className="cursor-pointer">Skills</li>
