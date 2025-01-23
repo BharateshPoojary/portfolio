@@ -14,16 +14,29 @@ const card = () => {
         <div className="p-5">
           <a href="#">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
+              Experience
             </h5>
           </a>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            Lazytech Infotech Solutions
           </p>
+          <span className="text-black font-semibold dark:text-white">
+            Software Developer
+          </span>
+          <ul>
+            <li>
+              Designed and developed web applications using Bootstrap, PHP,
+              React.js, and React Native.
+            </li>
+            <li>
+              Utilized SQL Server Management Studio for database management and
+              FileZilla for file handling, focusing on creating scalable and
+              user-friendly solutions
+            </li>
+          </ul>
           <a
             href="#"
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="inline-flex items-center px-3 py-2 my-2 text-sm font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Read more
             <svg
