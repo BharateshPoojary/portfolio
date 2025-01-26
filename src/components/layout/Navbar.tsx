@@ -11,7 +11,7 @@ export default function Navbar({ className }: { className?: string }) {
     <>
       <div className="relative">
         <div
-          className={`flex md:hidden justify-end cursor-pointer px-10 py-5 fixed top-0 left-0 right-0 z-[100]   ${
+          className={` md:hidden  fixed top-8 right-5 z-[100]   ${
             isSidebarOpen
               ? "bg-white/60 backdrop-blur-sm z-[90] "
               : "bg-white/60"

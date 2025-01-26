@@ -4,7 +4,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
 import { useSidebarStore } from "@/store/sidebarStore";
-
+import { ArrowDown } from "lucide-react";
 export default function MainLayout() {
   const Resume: string = "/resume-image.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
@@ -28,14 +28,19 @@ export default function MainLayout() {
       <div className={`relative  `}>
         <div className={`md:flex justify-center my-5 md:my-0 `}>
           <div className=" flex flex-col md:flex-row  justify-evenly items-center ">
-            <div className="h-[28rem] flex justify-center items-center px-4 w-full">
-              <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-                <FlipWords words={words} /> <br />
+            <div className="h-[28rem] flex flex-col justify-center items-center px-4 w-full">
+              <div className="text-4xl  font-normal text-neutral-600 dark:text-neutral-400">
+                <FlipWords words={words} />
                 passionate about developing web applications using MERN stack.
               </div>
+              <button className="md:hidden p-5 bg-violet-400 border-violet-950 rounded-full text-xl mt-5">
+                Click To View Resume
+              </button>
+
+              <ArrowDown size={32} />
             </div>
 
-            <div className="h-[40rem] w-full flex items-center justify-center ">
+            <div className="h-[30rem] w-full flex items-center justify-center ">
               <PinContainer
                 title="Resume"
                 href="https://drive.google.com/file/d/14d84h0LM0Q1WDRqNFCIOyHBHj2FTMkbB/view?usp=drivesdk"
