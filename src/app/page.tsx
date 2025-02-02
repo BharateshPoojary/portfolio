@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className="py-5 px-4 font-[family-name:var(--font-geist-sans)]">
+    <div className="md:py-5 md:px-4 font-[family-name:var(--font-geist-sans)]">
       <MainLayout />
     </div>
   );

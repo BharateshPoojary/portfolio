@@ -9,7 +9,7 @@ export default function Navbar({ className }: { className?: string }) {
   const { isSidebarOpen, toggleSidebar } = useSidebarStore();
   return (
     <>
-      <div className="relative">
+      <div className="relative min-h-[100px] md:min-h-0">
         <div
           className={` md:hidden  fixed top-8 right-5 z-[100]   ${
             isSidebarOpen
