@@ -6,7 +6,8 @@ import { PinContainer } from "../ui/3d-pin";
 import { useSidebarStore } from "@/store/sidebarStore";
 import { ArrowDown } from "lucide-react";
 import TimeLine from "./TimeLine";
-
+import Card from "./Card";
+import { SkillsCard } from "./Skills-Card";
 export default function MainLayout() {
   const Resume: string = "/resume-image.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
@@ -38,7 +39,7 @@ export default function MainLayout() {
           <div className="fixed inset-0  z-[90]" onClick={closeSideBar}></div>
         </div>
       )}
-      <div className=" my-5 flex flex-col md:flex-row  md:justify-evenly md:items-center ">
+      <div className="max-w-7xl mx-auto flex md:flex-row flex-col ">
         <div className="h-[28rem] flex flex-col justify-center items-center px-4 w-full">
           <div className="text-4xl  font-normal text-neutral-600 dark:text-neutral-400">
             <FlipWords words={words} />
@@ -74,6 +75,8 @@ export default function MainLayout() {
         </div>
       </div>
       <TimeLine />
+      <Card />
+      <SkillsCard />
     </>
   );
 }

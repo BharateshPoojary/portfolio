@@ -17,6 +17,7 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "tailwind-merge": "^2.6.0",
+    "tech-stack-icons": "^2.1.0",
     "zustand": "^5.0.3"
   },
   "overrides": {
