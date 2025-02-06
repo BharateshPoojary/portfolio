@@ -9,7 +9,7 @@ import Card from "./Card";
 import { SkillsCard } from "./Skills-Card";
 import { useInView } from "react-intersection-observer";
 export default function MainLayout() {
-  const Resume: string = "/resume-image.png";
+  const Resume: string = "/blurred-resume.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
   const { isSidebarOpen, closeSideBar } = useSidebarStore();
   const { setIsInView } = useInViewStore();
@@ -54,17 +54,14 @@ export default function MainLayout() {
           ref={pinRef}
         >
           <PinContainer
-            title="Resume"
+            title="Click To View Resume"
             href="https://drive.google.com/file/d/16Uy1A9V95HwxqXUVwpgTMVwjUi6Xbx93/view?usp=drivesdk"
           >
             <div
               className="flex basis-full flex-col tracking-tight sm:basis-1/2 w-[17rem] h-[24rem] rounded-xs"
               style={{ border: "2px solid #8317FF" }}
             >
-              <img
-                src={Resume}
-                className="w-full h-full border-none blur-sm "
-              />
+              <img src={Resume} className="w-full h-full border-none  " />
             </div>
           </PinContainer>
         </div>
