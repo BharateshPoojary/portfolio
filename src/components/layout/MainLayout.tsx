@@ -1,23 +1,25 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
-import { useSidebarStore } from "@/store/sidebarStore";
-import { ArrowDown } from "lucide-react";
+import { useInViewStore, useSidebarStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
 import Card from "./Card";
 import { SkillsCard } from "./Skills-Card";
+import { useInView } from "react-intersection-observer";
 export default function MainLayout() {
   const Resume: string = "/resume-image.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
   const { isSidebarOpen, closeSideBar } = useSidebarStore();
-  const resumeRef = useRef<HTMLImageElement | null>(null);
-  const handleClick = () => {
-    if (resumeRef) {
-      resumeRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const { setIsInView } = useInViewStore();
+  const { ref: pinRef, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  });
+  useEffect(() => {
+    setIsInView(inView);
+  }, [inView]);
   useEffect(() => {
     if (isSidebarOpen) {
       document.body.style.overflow = "hidden"; // Disable scrolling
@@ -46,17 +48,11 @@ export default function MainLayout() {
             passionate about developing web applications using MERN stack.
           </div>
         </div>
-        <div className="md:hidden flex flex-col justify-center items-center  w-full min-w-full">
-          <button
-            className=" p-4 bg-violet-500 border-violet-950 rounded-full text-lg mt-5 mx-0 text-white font-semibold "
-            onClick={handleClick}
-          >
-            Click Below To View Resume
-          </button>
-
-          <ArrowDown size={32} />
-        </div>
-        <div className=" h-[30rem] md:h-[42rem] w-full flex  justify-center items-center px-2">
+        <div className="md:hidden flex flex-col justify-center items-center  w-full min-w-full"></div>
+        <div
+          className=" h-[30rem] md:h-[42rem] w-full flex  justify-center items-center px-2"
+          ref={pinRef}
+        >
           <PinContainer
             title="Resume"
             href="https://drive.google.com/file/d/16Uy1A9V95HwxqXUVwpgTMVwjUi6Xbx93/view?usp=drivesdk"
@@ -68,7 +64,6 @@ export default function MainLayout() {
               <img
                 src={Resume}
                 className="w-full h-full border-none blur-sm "
-                ref={resumeRef}
               />
             </div>
           </PinContainer>

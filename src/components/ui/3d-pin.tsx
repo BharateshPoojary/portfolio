@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useInViewStore } from "@/store/sidebarStore";
 
 export const PinContainer = ({
   children,
@@ -17,22 +18,22 @@ export const PinContainer = ({
   className?: string;
   containerClassName?: string;
 }) => {
+  const { isInView } = useInViewStore();
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
-
-  const onMouseEnter = () => {
-    setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
-  };
-  const onMouseLeave = () => {
-    setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
-  };
+  useEffect(() => {
+    if (isInView) {
+      setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
+    } else {
+      setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
+    }
+  }, [isInView]);
 
   return (
     <div
-      className={cn("relative group/pin   cursor-pointer", containerClassName)}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className={cn(`relative group/pin cursor-pointer`, containerClassName)}
+      // creating a group with custome groupname as pin
     >
       <Link
         href={href || "/"}
@@ -52,7 +53,7 @@ export const PinContainer = ({
           style={{
             transform: transform,
           }}
-          className="absolute left-1/2 p-2 top-1/2  flex justify-start items-start  rounded-2xl  shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-white border border-white/[0.1] group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
+          className="absolute left-1/2 p-2 top-1/2  flex justify-start items-start  rounded-2xl  shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-white border border-white/[0.1] group/pin:border-white/[0.2] transition duration-700 overflow-hidden"
         >
           <div className={cn(" relative z-50 ", className)}>{children}</div>
         </div>
@@ -69,8 +70,13 @@ export const PinPerspective = ({
   title?: string;
   href?: string;
 }) => {
+  const { isInView } = useInViewStore();
   return (
-    <motion.div className="pointer-events-none  w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
+    <motion.div
+      className={`pointer-events-none  w-96 h-80 flex items-center justify-center  ${
+        isInView ? "opacity-100 z-[60] transition duration-500" : "opacity-0"
+      }`}
+    >
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
         <div className="absolute top-0 inset-x-0  flex justify-center">
           <a
@@ -82,7 +88,7 @@ export const PinPerspective = ({
               {title}
             </span>
 
-            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
+            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/pin:opacity-40"></span>
           </a>
         </div>
 
@@ -158,8 +164,8 @@ export const PinPerspective = ({
         </div>
 
         <>
-          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 group-hover/pin:h-40 blur-[2px]" />
-          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 group-hover/pin:h-40  " />
+          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-40  blur-[2px]" />
+          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-40   " />
           <motion.div className="absolute right-1/2 translate-x-[1.5px] bottom-1/2 bg-cyan-600 translate-y-[14px] w-[4px] h-[4px] rounded-full z-40 blur-[3px]" />
           <motion.div className="absolute right-1/2 translate-x-[0.5px] bottom-1/2 bg-cyan-300 translate-y-[14px] w-[2px] h-[2px] rounded-full z-40 " />
         </>
