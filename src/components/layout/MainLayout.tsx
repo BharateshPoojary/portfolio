@@ -1,17 +1,17 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
-import { useInViewStore, useSidebarStore } from "@/store/sidebarStore";
+import { useInViewStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
 import Card from "./Card";
 import { SkillsCard } from "./Skills-Card";
 import { useInView } from "react-intersection-observer";
+import GradientCards from "./GradientCards";
 export default function MainLayout() {
   const Resume: string = "/blurred-resume.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
-  const { isSidebarOpen, closeSideBar } = useSidebarStore();
   const { setIsInView } = useInViewStore();
   const { ref: pinRef, inView } = useInView({
     threshold: 0.5,
@@ -20,28 +20,12 @@ export default function MainLayout() {
   useEffect(() => {
     setIsInView(inView);
   }, [inView]);
-  useEffect(() => {
-    if (isSidebarOpen) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
-    } else {
-      document.body.style.overflow = "auto"; // Enable scrolling
-    }
-
-    // Cleanup on unmount or when sidebar state changes
-    return () => {
-      document.body.style.overflow = "auto"; // Ensure scrolling is enabled
-    };
-  }, [isSidebarOpen]);
 
   return (
     <>
       <Navbar />
-      {isSidebarOpen && (
-        <div className={`relative `}>
-          <div className="fixed inset-0  z-[90]" onClick={closeSideBar}></div>
-        </div>
-      )}
-      <div className="max-w-7xl mx-auto flex md:flex-row flex-col ">
+
+      <div className="max-w-7xl mx-auto flex md:flex-row flex-col max-[332px]:mt-[12vw] max-[293px]:mt-[20vw]">
         <div className="h-[28rem] flex flex-col justify-center items-center px-4 w-full">
           <div className="text-4xl  font-normal text-neutral-600 dark:text-neutral-400">
             <FlipWords words={words} />
@@ -67,7 +51,7 @@ export default function MainLayout() {
         </div>
       </div>
       <TimeLine />
-      <Card />
+      <GradientCards />
       <SkillsCard />
     </>
   );
