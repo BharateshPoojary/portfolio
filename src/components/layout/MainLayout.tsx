@@ -5,8 +5,6 @@ import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
 import { useInViewStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
-import Card from "./Card";
-import { SkillsCard } from "./Skills-Card";
 import { useInView } from "react-intersection-observer";
 import GradientCards from "./GradientCards";
 export default function MainLayout() {
@@ -52,7 +50,6 @@ export default function MainLayout() {
       </div>
       <TimeLine />
       <GradientCards />
-      <SkillsCard />
     </>
   );
 }
