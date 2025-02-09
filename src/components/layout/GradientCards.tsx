@@ -4,12 +4,12 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
-import StackIcon from "tech-stack-icons";
+import { AnimatedTooltip } from "../ui/animated-tooltip";
 const GradientCards = () => {
   interface TechStack {
     id: number;
-    techStackSource: string;
-    techStackAlt: string;
+    name: string;
+    image: string;
   }
   interface ProjectsType {
     id: number;
@@ -34,22 +34,12 @@ const GradientCards = () => {
                     and music, enhancing user engagement.`,
       majorConcepts: "Local Storage, DOM manipulation, etc.",
       techStacks: [
-        { id: 1, techStackSource: "/HTML5.png", techStackAlt: "html5" },
-        { id: 2, techStackSource: "/css3.svg", techStackAlt: "css3" },
+        { id: 1, name: "HTML5", image: "/HTML5.png" },
+        { id: 2, name: "CSS3", image: "/CSS3.svg" },
         {
           id: 3,
-          techStackSource: "/js.png",
-          techStackAlt: "js",
-        },
-        {
-          id: 4,
-          techStackSource: "/tmdb.png",
-          techStackAlt: "tmdb",
-        },
-        {
-          id: 5,
-          techStackSource: "/localstorage.png",
-          techStackAlt: "localstorage",
+          name: "javaScript",
+          image: "/javaScript.png",
         },
       ],
       demoLink: "https://bharatmoviereviewer.netlify.app/",
@@ -57,24 +47,19 @@ const GradientCards = () => {
     },
     {
       id: 2,
-      title: "Bharat Weather App",
+      title: "My Portfolio",
       src: "/weather-app.png",
-      alt: "weather app",
-      description: `Users can access their current location's weather data, including
-                    temperature, humidity, wind speed, etc. They can also search for
-                    other cities' weather data using the search bar.`,
-      majorConcepts: "Conditional Rendering, Geolocation API, etc.",
+      alt: "my Portfolio",
+      description: `Built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI, this portfolio is a showcase of my skills in full-stack development using the MERN stack. It features a sleek, responsive design with smooth UI interactions, highlighting my expertise in React, Node.js, Express, and MongoDB. `,
+      majorConcepts: "TypeScript, Next.js and libraries like Aceternity UI",
       techStacks: [
-        { id: 1, techStackSource: "/reactjs.png", techStackAlt: "reactjs" },
-        { id: 2, techStackSource: "/vite.svg", techStackAlt: "vite" },
-        {
-          id: 3,
-          techStackSource: "/geolocation.png",
-          techStackAlt: "geolocation",
-        },
+        { id: 1, name: "Next.js", image: "/Next.js.png" },
+        { id: 2, name: "Typescript", image: "/TypeScript.png" },
+        { id: 3, name: "Tailwind", image: "/TailwindCSS.png" },
+        { id: 4, name: "Aceternity", image: "/Aceternity.png" },
       ],
       demoLink: "https://bharatweatherapp.netlify.app/",
-      githubLink: "https://github.com/BharateshPoojary/weather",
+      githubLink: "https://github.com/BharateshPoojary/portfolio",
     },
     {
       id: 3,
@@ -86,13 +71,10 @@ const GradientCards = () => {
       majorConcepts:
         "Context API, JWT Token, bcryptjs, MongoDB Atlas, Netlify (AWS Lambda).",
       techStacks: [
-        { id: 1, techStackSource: "/HTML5.png", techStackAlt: "html5" },
-        { id: 2, techStackSource: "/css3.svg", techStackAlt: "css3" },
-        {
-          id: 3,
-          techStackSource: "/js.png",
-          techStackAlt: "js",
-        },
+        { id: 1, name: "MongoDB", image: "/MongoDB.png" },
+        { id: 2, name: "Express", image: "/Express.png" },
+        { id: 3, name: "React", image: "/React.png" },
+        { id: 4, name: "Node.js", image: "/Node.js.png" },
       ],
       demoLink: "https://bharat-note-app.netlify.app/",
       githubLink: "https://github.com/BharateshPoojary/notebook-app",
@@ -111,10 +93,10 @@ const GradientCards = () => {
           {projects.map((eachproject) => (
             <BackgroundGradient
               key={eachproject.id}
-              className="rounded-[22px] w-fit"
+              className="rounded-[22px] w-fit h-fit"
             >
               <div>
-                <div className="bg-gray-50    dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                <div className="bg-gray-50    dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] min-[422]:h-[38rem] h-[48]rounded-xl p-6 border rounded-xl ">
                   <div className="text-xl font-bold text-violet-600 dark:text-white">
                     {eachproject.title}
                   </div>
@@ -130,7 +112,7 @@ const GradientCards = () => {
                   <div className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
                     {eachproject.description}
                   </div>
-                  <div className="flex  flex-row justify-between items-center w-full text-neutral-500 text-sm ">
+                  <div className="flex  flex-row justify-between items-center w-full text-neutral-500 text-sm">
                     <div className="flex-1">
                       <span className="text-violet-600 text-xl ">
                         Highlights
@@ -139,21 +121,8 @@ const GradientCards = () => {
                       {eachproject.majorConcepts}
                     </div>
                     <div className="flex-1">
-                      <span className="text-violet-600 text-xl ">
-                        Tech Stacks
-                      </span>
-                      <br />
-                      <div className="flex">
-                        {eachproject.techStacks.map((eachtechstack) => (
-                          <Image
-                            key={eachtechstack.id}
-                            src={eachtechstack.techStackSource}
-                            alt={eachtechstack.techStackAlt}
-                            height="1000"
-                            width="1000"
-                            className="h-10 w-10 "
-                          />
-                        ))}
+                      <div className="flex flex-row items-center justify-center ">
+                        <AnimatedTooltip items={eachproject.techStacks} />
                       </div>
                     </div>
                   </div>
