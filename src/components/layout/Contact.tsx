@@ -1,8 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import React, { useRef } from "react";
-import { AnimatedTooltip } from "../ui/animated-tooltip";
 
 const Contact = () => {
-  const TechStack = [
+  const SocialHandle = [
     {
       id: 1,
       name: "Gmail",
@@ -28,11 +29,23 @@ const Contact = () => {
         <h2 className="text-4xl md:text-6xl mb-4 text-violet-500 dark:text-white max-w-4xl">
           Contact
         </h2>
-        <div className="text-2xl md:text-4xl mb-4 max-w-4xl text-center">
-          Lets's connect and create something great!
+        <div className="flex flex-row items-center justify-center ">
+          <div className="text-2xl md:text-4xl mb-4 max-w-4xl text-center  ">
+            Lets's connect and create something great!
+          </div>
         </div>
         <div className="flex flex-row items-center justify-center space-x-5 mb-10 w-full cursor-pointer">
-          <AnimatedTooltip items={TechStack} />
+          {SocialHandle.map((eachsocialhandle) => (
+            <Link key={eachsocialhandle.id} href={eachsocialhandle.src}>
+              <Image
+                height="1000"
+                width="1000"
+                src={eachsocialhandle.image}
+                alt={eachsocialhandle.name}
+                className="object-cover !m-0 !p-0 object-top rounded-full sm:h-14 sm:w-14 h-12 w-12  border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </div>

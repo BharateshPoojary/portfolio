@@ -42,7 +42,7 @@ export default function MainLayout() {
         projectsRef={ProjectsRef}
         contactRef={ContactRef}
       />
-      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto">
+      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto mt-6">
         <BlurText
           text="Welcome to Bharatesh's Portfolio"
           delay={150}
