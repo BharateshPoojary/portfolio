@@ -77,7 +77,7 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <Link href={item.src ?? "#"}>
+          <Link href={item.src ?? ""}>
             <Image
               onMouseMove={handleMouseMove}
               height={100}

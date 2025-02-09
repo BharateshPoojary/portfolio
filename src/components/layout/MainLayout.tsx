@@ -27,7 +27,13 @@ export default function MainLayout() {
   useEffect(() => {
     setIsInView(inView);
   }, [inView]);
-
+  const BharatImage = [
+    {
+      id: 1,
+      name: "Hi!,Bharatesh here",
+      image: "/Bharat.png",
+    },
+  ];
   return (
     <>
       <Navbar
@@ -36,7 +42,7 @@ export default function MainLayout() {
         projectsRef={ProjectsRef}
         contactRef={ContactRef}
       />
-      <div className="h-[100vh] flex justify-evenly items-center max-w-7xl mx-auto">
+      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto">
         <BlurText
           text="Welcome to Bharatesh's Portfolio"
           delay={150}
