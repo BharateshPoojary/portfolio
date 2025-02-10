@@ -8,3 +8,14 @@ export const useInViewStore = create<InViewState>((set) => ({
   isInView: false,
   setIsInView: (inViewValue) => set(() => ({ isInView: inViewValue })),
 }));
+interface ThemeState {
+  CurrentTheme: string;
+  setTheme: () => void;
+}
+export const useToggleThemeStore = create<ThemeState>((set) => ({
+  CurrentTheme: "dark",
+  setTheme: () =>
+    set((state) => ({
+      CurrentTheme: state.CurrentTheme === "dark" ? "light" : "dark",
+    })),
+}));

@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
-import { useInViewStore } from "@/store/sidebarStore";
+import { useInViewStore, useToggleThemeStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
 import { useInView } from "react-intersection-observer";
 import GradientCards from "./GradientCards";
@@ -27,13 +27,7 @@ export default function MainLayout() {
   useEffect(() => {
     setIsInView(inView);
   }, [inView]);
-  const BharatImage = [
-    {
-      id: 1,
-      name: "Hi!,Bharatesh here",
-      image: "/Bharat.png",
-    },
-  ];
+  const { CurrentTheme } = useToggleThemeStore();
   return (
     <>
       <Navbar
@@ -42,13 +36,13 @@ export default function MainLayout() {
         projectsRef={ProjectsRef}
         contactRef={ContactRef}
       />
-      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto mt-6">
+      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto  sm:mt-20">
         <BlurText
           text="Welcome to Bharatesh's Portfolio"
           delay={150}
           animateBy="words"
           direction="top"
-          className="md:text-9xl text-5xl"
+          className="md:text-9xl sm:text-6xl text-5xl"
         />
         <Image
           src="/Bharat.png"
