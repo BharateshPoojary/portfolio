@@ -1,4 +1,5 @@
 "use client";
+import { useToggleThemeStore } from "@/store/sidebarStore";
 import {
   useMotionValueEvent,
   useScroll,
@@ -13,6 +14,7 @@ interface TimelineEntry {
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
+  const { CurrentTheme } = useToggleThemeStore();
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -34,7 +36,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
+      className={`w-full  font-sans md:px-10 ${
+        CurrentTheme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      }`}
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">

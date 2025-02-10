@@ -1,8 +1,13 @@
 "use client";
 import React from "react";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
-
+import { useToggleThemeStore } from "@/store/sidebarStore";
 export function AnimatedTooltipPreview() {
+  const { CurrentTheme } = useToggleThemeStore();
+  const expressImageSrc =
+    CurrentTheme === "dark" ? "/express-white.png" : "/Express.png";
+  const nextjsImageSrc =
+    CurrentTheme === "dark" ? "/nextjs-white.png" : "/Next.js.png";
   const TechStack = [
     {
       id: 1,
@@ -12,7 +17,7 @@ export function AnimatedTooltipPreview() {
     {
       id: 2,
       name: "Expressjs",
-      image: "/Express.png",
+      image: expressImageSrc,
     },
     {
       id: 3,
@@ -27,7 +32,7 @@ export function AnimatedTooltipPreview() {
     {
       id: 5,
       name: "Nextjs",
-      image: "/Next.js.png",
+      image: nextjsImageSrc,
     },
   ];
   return (

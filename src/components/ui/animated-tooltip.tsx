@@ -9,6 +9,7 @@ import {
   useSpring,
 } from "framer-motion";
 import Link from "next/link";
+import { useToggleThemeStore } from "@/store/sidebarStore";
 
 export const AnimatedTooltip = ({
   items,
@@ -19,6 +20,7 @@ export const AnimatedTooltip = ({
     image: string;
   }[];
 }) => {
+  const { CurrentTheme } = useToggleThemeStore();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -83,7 +85,7 @@ export const AnimatedTooltip = ({
             width={100}
             src={item.image}
             alt={item.name}
-            className="object-cover !m-0 !p-0 object-top rounded-full sm:h-14 sm:w-14 h-12 w-12  border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+            className={`object-cover !m-0 !p-0 object-top rounded-lg sm:h-14 sm:w-14 h-12 w-12  group-hover:scale-105 group-hover:z-30 relative transition duration-500`}
           />
         </div>
       ))}

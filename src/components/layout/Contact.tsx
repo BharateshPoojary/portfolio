@@ -1,8 +1,12 @@
+import { useToggleThemeStore } from "@/store/sidebarStore";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 
 const Contact = () => {
+  const { CurrentTheme } = useToggleThemeStore();
+  const githubImageSrc =
+    CurrentTheme === "dark" ? "/github-white.png" : "/github.png";
   const SocialHandle = [
     {
       id: 1,
@@ -19,7 +23,7 @@ const Contact = () => {
     {
       id: 3,
       name: "Github",
-      image: "/Github.png",
+      image: githubImageSrc,
       src: "https://github.com/BharateshPoojary",
     },
   ];
@@ -42,7 +46,7 @@ const Contact = () => {
                 width="1000"
                 src={eachsocialhandle.image}
                 alt={eachsocialhandle.name}
-                className="object-cover !m-0 !p-0 object-top rounded-full sm:h-14 sm:w-14 h-12 w-12  border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+                className="object-cover !m-0 !p-0 object-top rounded-md sm:h-14 sm:w-14 h-12 w-12  group-hover:scale-105 group-hover:z-30   relative transition duration-500"
               />
             </Link>
           ))}

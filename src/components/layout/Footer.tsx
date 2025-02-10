@@ -1,10 +1,16 @@
+import { useToggleThemeStore } from "@/store/sidebarStore";
 import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
+  const { CurrentTheme } = useToggleThemeStore();
   return (
     <div>
-      <footer className="bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4">
+      <footer
+        className={`${
+          CurrentTheme === "dark" ? "bg-dark " : "bg-white"
+        } rounded-lg  m-4`}
+      >
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <hr className="my-6 border-violet-700 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
