@@ -24,33 +24,40 @@ export default function Navbar({
   const { CurrentTheme, setTheme } = useToggleThemeStore();
   return (
     <>
-      <div className="fixed   w-12 h-12 z-50 rounded-full  my-5 md:mt-0 cursor-pointer top-8 right-5">
+      <div className="fixed   w-12 h-12 z-[100] rounded-full  my-5 md:mt-0 cursor-pointer  md:top-10 top-4  sm:right-5 right-0">
         {CurrentTheme === "dark" ? (
           <Image
-            src="/light-mode-icon.png"
+            src="/sun.png"
             width={1000}
             height={1000}
             alt="lightmodeicon"
             onClick={() => setTheme()}
-            className="h-15 w-15"
+            className="sm:h-15 h-7 sm:w-15 w-7"
           />
         ) : (
           <Image
-            src="/moon-line-icon.png"
+            src="/moon.png"
             width={1000}
             height={1000}
             alt="moonlineicon"
             onClick={() => setTheme()}
-            className="h-15 w-15"
+            className="sm:h-15 h-7 sm:w-15 w-7"
           />
         )}
       </div>
 
       <div
-        className={cn(
-          "fixed  inset-x-0 sm:max-w-3xl  max-w-80 mx-auto z-50 rounded-full bg-white/30 backdrop-blur-lg my-5 md:mt-0 ",
-          className
-        )}
+        className={
+          CurrentTheme === "dark"
+            ? cn(
+                "fixed  inset-x-0 sm:max-w-3xl  mx-auto z-50 rounded-full bg-black/30 backdrop-blur-lg my-5 md:mt-0 ",
+                className
+              )
+            : cn(
+                "fixed  inset-x-0 sm:max-w-3xl  mx-auto z-50 rounded-full bg-white/30 backdrop-blur-lg my-5 md:mt-0 ",
+                className
+              )
+        }
         style={{ border: "2px solid #8317FF" }}
       >
         <Menu>

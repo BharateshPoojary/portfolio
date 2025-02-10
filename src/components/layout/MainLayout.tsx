@@ -36,21 +36,25 @@ export default function MainLayout() {
         projectsRef={ProjectsRef}
         contactRef={ContactRef}
       />
-      <div className="h-[100vh] flex lg:flex-row flex-col justify-evenly items-center max-w-7xl mx-auto  sm:mt-20">
-        <BlurText
-          text="Welcome to Bharatesh's Portfolio"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          className="md:text-9xl sm:text-6xl text-5xl"
-        />
-        <Image
-          src="/Bharat.png"
-          alt="Bharatesh Photo"
-          height="1000"
-          width="1000"
-          className="h-fit w-fit"
-        />
+      <div className="md:flex md:h-screen items-center justify-center">
+        <div className="h-screen flex items-center justify-center">
+          <BlurText
+            text="Welcome to Bharatesh's Portfolio"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="lg:text-8xl md:text-7xl text-6xl   "
+          />
+        </div>
+        <div className="h-fit flex items-center justify-center">
+          <Image
+            src="/Bharat.png"
+            alt="Bharatesh Photo"
+            height="1000"
+            width="1000"
+            className=" h-fit w-fit "
+          />
+        </div>
       </div>
       <div
         ref={AboutRef}

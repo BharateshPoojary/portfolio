@@ -14,7 +14,7 @@ export const MenuItem = ({ item }: { item: string }) => {
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   return (
-    <nav className="relative rounded-full  shadow-input flex justify-evenly space-x-4 px-8 py-4  md:py-6 ">
+    <nav className="relative rounded-full  shadow-input flex justify-evenly sm:space-x-4 space-x-1 px-8  py-4  md:py-6 ">
       {children}
     </nav>
   );
