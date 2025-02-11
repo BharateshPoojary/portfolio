@@ -1,7 +1,7 @@
 import { useToggleThemeStore } from "@/store/sidebarStore";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 
 const Contact = () => {
   const { CurrentTheme } = useToggleThemeStore();
@@ -35,7 +35,7 @@ const Contact = () => {
         </h2>
         <div className="flex flex-row items-center justify-center ">
           <div className="text-2xl md:text-4xl mb-4 max-w-4xl text-center  ">
-            Lets's connect and create something great!
+            Lets&apos;s connect and create something great!
           </div>
         </div>
         <div className="flex flex-row items-center justify-center space-x-5 mb-10 w-full cursor-pointer">

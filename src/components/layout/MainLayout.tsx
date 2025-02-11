@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
-import { useInViewStore, useToggleThemeStore } from "@/store/sidebarStore";
+import { useInViewStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
 import { useInView } from "react-intersection-observer";
 import GradientCards from "./GradientCards";
@@ -26,8 +26,7 @@ export default function MainLayout() {
   });
   useEffect(() => {
     setIsInView(inView);
-  }, [inView]);
-  const { CurrentTheme } = useToggleThemeStore();
+  }, [setIsInView, inView]);
   return (
     <>
       <Navbar
@@ -87,7 +86,13 @@ export default function MainLayout() {
               className="flex basis-full flex-col tracking-tight sm:basis-1/2 w-[17rem] h-[24rem] rounded-xs"
               style={{ border: "2px solid #8317FF" }}
             >
-              <img src={Resume} className="w-full h-full border-none  " />
+              <Image
+                src={Resume}
+                className="w-full h-full border-none  "
+                alt="resume"
+                width={1000}
+                height={1000}
+              />
             </div>
           </PinContainer>
         </div>
