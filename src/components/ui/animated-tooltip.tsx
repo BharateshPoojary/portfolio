@@ -8,7 +8,6 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { useToggleThemeStore } from "@/store/sidebarStore";
 
 export const AnimatedTooltip = ({
   items,
