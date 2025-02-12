@@ -1,5 +1,5 @@
-**Bharatesh's Portfolio
-*****Welcome to my personal portfolio! This website is built using TypeScript, Tailwind CSS, Aceternity UI, and Zustand, showcasing my expertise in MERN stack development.
+**Bharatesh's Portfolio**
+****Welcome to my personal portfolio! This website is built using TypeScript, Tailwind CSS, Aceternity UI, and Zustand, showcasing my expertise in MERN stack development.****
 
 🚀 **\*Tech Stack (For This Portfolio)
 \*\***Frontend: Next.js, TypeScript, Tailwind CSS, Aceternity UI
