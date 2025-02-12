@@ -22,7 +22,7 @@ export function AnimatedTooltipPreview() {
     {
       id: 3,
       name: "Reactjs",
-      image: "/react.png",
+      image: "/React.png",
     },
     {
       id: 4,

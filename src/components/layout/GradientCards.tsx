@@ -42,9 +42,9 @@ const GradientCards = () => {
         { id: 2, name: "Typescript", image: "/TypeScript.png" },
         { id: 3, name: "Tailwind", image: "/TailwindCSS.png" },
         { id: 4, name: "Aceternity", image: "/Aceternity.png" },
-        {id:5,name:'zustand',image:'/zustand.png'}
+        { id: 5, name: "zustand", image: "/zustand.png" },
       ],
-      demoLink: "https://bharatweatherapp.netlify.app/",
+      demoLink: "https://bharatesh-portfolio.vercel.app/",
       githubLink: "https://github.com/BharateshPoojary/portfolio",
     },
     {
