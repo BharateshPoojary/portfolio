@@ -8,7 +8,7 @@ const TimeLine = () => {
       title: "2024-Present",
       content: (
         <div>
-          <p className="text-violet-800 dark:text-neutral-200 text-3xl font-normal mb-4">
+          <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
             Lazytech Infotech Solutions
           </p>
           <p
@@ -25,7 +25,7 @@ const TimeLine = () => {
       title: "2021-24",
       content: (
         <div>
-          <p className="text-violet-800 dark:text-neutral-200 text-3xl font-normal mb-4">
+          <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
             Bachelor of Computer Application
           </p>
           <p
