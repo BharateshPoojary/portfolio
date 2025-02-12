@@ -80,7 +80,7 @@ export default function MainLayout() {
         >
           <PinContainer
             title="Click To View Resume"
-            href="https://drive.google.com/file/d/16Uy1A9V95HwxqXUVwpgTMVwjUi6Xbx93/view?usp=drivesdk"
+            href="https://drive.google.com/file/d/1APOBFAiVcq0MfkMDEw8tmIgpXlKd4gsm/view"
           >
             <div
               className="flex basis-full flex-col tracking-tight sm:basis-1/2 w-[17rem] h-[24rem] rounded-xs"
