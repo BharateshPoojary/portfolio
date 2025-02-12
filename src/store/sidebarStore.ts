@@ -13,7 +13,7 @@ interface ThemeState {
   setTheme: () => void;
 }
 export const useToggleThemeStore = create<ThemeState>((set) => ({
-  CurrentTheme: "dark",
+  CurrentTheme: "light",
   setTheme: () =>
     set((state) => ({
       CurrentTheme: state.CurrentTheme === "dark" ? "light" : "dark",
