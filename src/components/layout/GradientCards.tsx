@@ -77,11 +77,11 @@ const GradientCards = () => {
       majorConcepts: "Local Storage, DOM manipulation, etc.",
       techStacks: [
         { id: 1, name: "HTML5", image: "/HTML5.png" },
-        { id: 2, name: "CSS3", image: "/CSS3.svg" },
+        { id: 2, name: "CSS3", image: "/CSS3.png" },
         {
           id: 3,
           name: "javaScript",
-          image: "/javaScript.png",
+          image: "/JavaScript.png",
         },
       ],
       demoLink: "https://bharatmoviereviewer.netlify.app/",
