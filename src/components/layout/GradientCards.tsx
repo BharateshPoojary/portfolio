@@ -9,7 +9,7 @@ import { useToggleThemeStore } from "@/store/sidebarStore";
 const GradientCards = () => {
   const { CurrentTheme } = useToggleThemeStore();
   const expressImageSrc =
-    CurrentTheme === "dark" ? "/express-white.png" : "/Express.png";
+    CurrentTheme === "dark" ? "/Express-white.png" : "/Express.png";
   const nextjsImageSrc =
     CurrentTheme === "dark" ? "/nextjs-white.png" : "/Next.js.png";
 
