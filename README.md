@@ -5,23 +5,16 @@
 ### 🚀 Tech Stack (For This Portfolio)
 
 #### Frontend: Next.js, TypeScript, Tailwind CSS, Aceternity UI
-
 #### State Management: Zustand
 
 ### 💡 About
 
-##### This portfolio serves as a showcase of my skills in full-stack development using MREN OR Next.js.
-
+##### This portfolio serves as a showcase of my skills in full-stack development using MERN OR Next.js.
 ##### It highlights my ability to build scalable, high-performance web applications using:
-
 ##### MongoDB (Database)
-
 ##### Express.js (Backend)
-
 ##### React.js (Frontend)
-
 ##### Node.js (Server-side)
-
 ##### Next.js(Full Stack)
 
 ### 🔗Live Demo
@@ -31,25 +24,18 @@
 ### 📁Installation & Setup
 
 #### Clone the repository:
-
 ###### git clone https://github.com/BharateshPoojary/portfolio
-
 ###### cd portfolio
 
 #### Install dependencies:
-
 ##### npm install
 
 #### Run the development server:
-
 ##### npm run dev
-
 ##### Open http://localhost:3000 in your browser.
 
 ### 📬 Contact
 
 ##### Want to collaborate or discuss a project? Feel free to reach out!
-
 ##### 📧Email: bharateshpoojari@gmail.com
-
 ##### 💼LinkedIn: https://www.linkedin.com/in/bharatesh-poojary-6a1121270
