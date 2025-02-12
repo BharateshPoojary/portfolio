@@ -1,14 +1,14 @@
-🌟 ## Bharatesh's Portfolio
+## 🌟Bharatesh's Portfolio
 
 #### Welcome to my personal portfolio! This website is built using TypeScript, Tailwind CSS, Aceternity UI, and Zustand, showcasing my expertise in MERN stack development.
 
-🚀 ### Tech Stack (For This Portfolio)
+### 🚀 Tech Stack (For This Portfolio)
 
 #### Frontend: Next.js, TypeScript, Tailwind CSS, Aceternity UI
 
 #### State Management: Zustand
 
-💡 ### About
+### 💡 About
 
 ##### This portfolio serves as a showcase of my skills in full-stack development using MREN OR Next.js.
 
@@ -24,10 +24,11 @@
 
 ##### Next.js(Full Stack)
 
-🔗 ### Live Demo
-👉 ##### https://bharatesh-portfolio.vercel.app/
+### 🔗Live Demo
 
-📁 ### Installation & Setup
+##### 👉 https://bharatesh-portfolio.vercel.app/
+
+### 📁Installation & Setup
 
 #### Clone the repository:
 
@@ -45,9 +46,10 @@
 
 ##### Open http://localhost:3000 in your browser.
 
-📬 ### Contact
+### 📬 Contact
 
 ##### Want to collaborate or discuss a project? Feel free to reach out!
 
-📧 ##### Email: bharateshpoojari@gmail.com
-💼 ##### LinkedIn: https://www.linkedin.com/in/bharatesh-poojary-6a1121270
+##### 📧Email: bharateshpoojari@gmail.com
+
+##### 💼LinkedIn: https://www.linkedin.com/in/bharatesh-poojary-6a1121270
