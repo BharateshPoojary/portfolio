@@ -9,7 +9,7 @@
 
 ### 💡 About
 
-##### This portfolio serves as a showcase of my skills in full-stack development using MREN OR Next.js.
+##### This portfolio serves as a showcase of my skills in full-stack development using MERN OR Next.js.
 ##### It highlights my ability to build scalable, high-performance web applications using:
 ##### MongoDB (Database)
 ##### Express.js (Backend)
