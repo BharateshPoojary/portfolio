@@ -6,7 +6,7 @@ import React from "react";
 const Contact = () => {
   const { CurrentTheme } = useToggleThemeStore();
   const githubImageSrc =
-    CurrentTheme === "dark" ? "/github-white.png" : "/github.png";
+    CurrentTheme === "dark" ? "/github-white.png" : "/Github.png";
   const SocialHandle = [
     {
       id: 1,

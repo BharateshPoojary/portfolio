@@ -121,10 +121,22 @@ const GradientCards = () => {
                     alt={eachproject.alt}
                   />
 
-                  <div className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  <div
+                    className={`${
+                      CurrentTheme === "dark"
+                        ? "text-neutral-300"
+                        : "text-neutral-800"
+                    } text-sm max-w-sm mt-2 `}
+                  >
                     {eachproject.description}
                   </div>
-                  <div className="flex  flex-row justify-between items-center w-full text-neutral-300 text-sm">
+                  <div
+                    className={` ${
+                      CurrentTheme === "dark"
+                        ? "text-neutral-300"
+                        : "text-neutral-800"
+                    } flex  flex-row justify-between items-center w-ful text-sm`}
+                  >
                     <div className="flex-1">
                       <span className="text-violet-400 text-xl ">
                         Highlights
