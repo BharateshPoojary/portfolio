@@ -5,7 +5,7 @@ const TimeLine = () => {
   const { CurrentTheme } = useToggleThemeStore();
   const data = [
     {
-      title: "2024-Present",
+      title: "Nov 2024-Feb 2025",
       content: (
         <div>
           <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
