@@ -32,16 +32,16 @@ const GradientCards = () => {
   const projects: ProjectsType[] = [
     {
       id: 1,
-      title: "Bharat SnapTalk App",
+      title: "Bharat SnapTalk App - Near Completion",
       src: "/bharat-snaptalk.png",
       alt: "bharat snaptalk app",
-      description: `Bharat SnapTalk App is a social media platform built with Next.js and TypeScript, allowing users to receive text, images, and videos from others by sending the unique links provided to them . The app features a modern and interactive UI powered by ShadCN UI, with AWS S3 integration for secure file storage. Authentication is handled using NextAuth.js and bcrypt.js, while Redux Toolkit ensures efficient state management. Deployed on an AWS EC2 instance for scalability and performance, the final steps include SSL certification and domain mapping for a full production release `,
+      description: `Bharat SnapTalk App is a social media platform built with Next.js and TypeScript, allowing users to receive text, images, and videos from others by sending the unique links provided to them . The app features AWS S3 integration for secure file storage. Authentication is handled using NextAuth.js and bcrypt.js. Deployed on an AWS EC2 instance for scalability and performance`,
       majorConcepts: "TypeScript, Next.js ,ShadCN UI ,AWS S3,EC2, NextAuth.js",
       techStacks: [
         { id: 1, name: "Next.js", image: nextjsImageSrc },
         { id: 2, name: "Typescript", image: "/TypeScript.png" },
         { id: 3, name: "AWS", image: "/aws.jpg" },
-        { id: 4, name: "Aceternity", image: "/nextauth.png" },
+        { id: 4, name: "NextAuth.js", image: "/nextauth.png" },
         { id: 5, name: "ShadCN UI", image: "/shadcn.png" },
       ],
       githubLink: "https://github.com/BharateshPoojary/feedback-app",
