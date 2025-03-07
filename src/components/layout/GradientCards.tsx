@@ -25,13 +25,29 @@ const GradientCards = () => {
     alt: string;
     description: string;
     majorConcepts: string;
-    demoLink: string;
+    demoLink?: string;
     githubLink: string;
     techStacks: TechStack[];
   }
   const projects: ProjectsType[] = [
     {
       id: 1,
+      title: "Bharat SnapTalk App",
+      src: "/bharat-snaptalk.png",
+      alt: "bharat snaptalk app",
+      description: `Bharat SnapTalk App is a social media platform built with Next.js and TypeScript, allowing users to receive text, images, and videos from others by sending the unique links provided to them . The app features a modern and interactive UI powered by ShadCN UI, with AWS S3 integration for secure file storage. Authentication is handled using NextAuth.js and bcrypt.js, while Redux Toolkit ensures efficient state management. Deployed on an AWS EC2 instance for scalability and performance, the final steps include SSL certification and domain mapping for a full production release `,
+      majorConcepts: "TypeScript, Next.js ,ShadCN UI ,AWS S3,EC2, NextAuth.js",
+      techStacks: [
+        { id: 1, name: "Next.js", image: nextjsImageSrc },
+        { id: 2, name: "Typescript", image: "/TypeScript.png" },
+        { id: 3, name: "AWS", image: "/aws.jpg" },
+        { id: 4, name: "Aceternity", image: "/nextauth.png" },
+        { id: 5, name: "ShadCN UI", image: "/shadcn.png" },
+      ],
+      githubLink: "https://github.com/BharateshPoojary/feedback-app",
+    },
+    {
+      id: 2,
       title: "My Portfolio",
       src: "/bharat-portfolio.png",
       alt: "my Portfolio",
@@ -48,7 +64,7 @@ const GradientCards = () => {
       githubLink: "https://github.com/BharateshPoojary/portfolio",
     },
     {
-      id: 2,
+      id: 3,
       title: "Bharat Note App",
       src: "/note-app-image.png",
       alt: "bharat note app",
@@ -66,7 +82,7 @@ const GradientCards = () => {
       githubLink: "https://github.com/BharateshPoojary/notebook-app",
     },
     {
-      id: 3,
+      id: 4,
       title: "Movie Reviewer Platform",
       src: "/movie-reviewer.png",
       alt: "movie reviewer",
@@ -151,13 +167,15 @@ const GradientCards = () => {
                     </div>
                   </div>
                   <div className="flex justify-between items-center mt-10">
-                    <Link
-                      href={eachproject.demoLink}
-                      target="__blank"
-                      className=" md:px-6 md:py-4  rounded-xl text-sm font-bold  text-white bg-violet-600 px-4 py-4 mx-auto"
-                    >
-                      View Live App
-                    </Link>
+                    {eachproject.demoLink && (
+                      <Link
+                        href={eachproject.demoLink}
+                        target="__blank"
+                        className=" md:px-6 md:py-4  rounded-xl text-sm font-bold  text-white bg-violet-600 px-4 py-4 mx-auto"
+                      >
+                        View Live App
+                      </Link>
+                    )}
                     <Link
                       href={eachproject.githubLink}
                       target="__blank"
