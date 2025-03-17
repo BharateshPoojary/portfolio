@@ -32,6 +32,23 @@ const GradientCards = () => {
   const projects: ProjectsType[] = [
     {
       id: 1,
+      title: "LLM based ChatBot",
+      src: "/bharat-llm-model.png",
+      alt: "bharat llm based chatbot",
+      description: `Developed an LLM-powered chatbot using Next.js and TypeScript, integrated with Google Gemini AI via LangChain for natural language processing and also used vercel AI SDK for efficient integration with LLM .Utilized Pinecone for vector storage and fast similarity search to enable contextual conversations.Implemented Redux for state management and optimized user experience with ShadCN UI components .Enabled PDF parsing and interaction using pdf-parse,allowing the chatbot to extract and process information from uploaded documents`,
+      majorConcepts:
+        "GeminiAI,Langchain,Pinecone,TypeScript, Next.js ,ShadCN UI ,",
+      techStacks: [
+        { id: 1, name: "Gemini AI", image: "/gemini-logo.webp" },
+        { id: 2, name: "Langchain", image: "/langchain.webp" },
+        { id: 3, name: "AI SDK", image: "/AI-SDK.png" },
+        { id: 4, name: "Pinecone DB", image: "/pinecone.png" },
+      ],
+      githubLink: "https://github.com/BharateshPoojary/llm-model",
+      demoLink: "https://bharat-llm-model.vercel.app",
+    },
+    {
+      id: 2,
       title: "Bharat SnapTalk App - Near Completion",
       src: "/bharat-snaptalk.png",
       alt: "bharat snaptalk app",
@@ -47,7 +64,7 @@ const GradientCards = () => {
       githubLink: "https://github.com/BharateshPoojary/feedback-app",
     },
     {
-      id: 2,
+      id: 3,
       title: "My Portfolio",
       src: "/bharat-portfolio.png",
       alt: "my Portfolio",
@@ -64,7 +81,7 @@ const GradientCards = () => {
       githubLink: "https://github.com/BharateshPoojary/portfolio",
     },
     {
-      id: 3,
+      id: 4,
       title: "Bharat Note App",
       src: "/note-app-image.png",
       alt: "bharat note app",
@@ -82,7 +99,7 @@ const GradientCards = () => {
       githubLink: "https://github.com/BharateshPoojary/notebook-app",
     },
     {
-      id: 4,
+      id: 5,
       title: "Movie Reviewer Platform",
       src: "/movie-reviewer.png",
       alt: "movie reviewer",
@@ -117,13 +134,13 @@ const GradientCards = () => {
           {projects.map((eachproject) => (
             <BackgroundGradient
               key={eachproject.id}
-              className="rounded-[22px] w-fit h-fit"
+              className="rounded-[22px] w-fit h-[100%]"
             >
-              <div>
+              <div className="h-[100%]">
                 <div
                   className={`${
                     CurrentTheme === "dark" ? " bg-black " : " bg-white "
-                  }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] min-[422]:h-[38rem] h-[48]rounded-xl p-6 border rounded-xl `}
+                  }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] min-[422]:h-[38rem] h-[100%] p-6 border rounded-xl `}
                 >
                   <div className="text-xl font-bold text-violet-600 dark:text-white">
                     {eachproject.title}
