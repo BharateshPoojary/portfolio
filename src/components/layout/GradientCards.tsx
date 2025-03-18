@@ -32,10 +32,10 @@ const GradientCards = () => {
   const projects: ProjectsType[] = [
     {
       id: 1,
-      title: "Bharat SnapTalk App - Near Completion",
+      title: "Anonytalks",
       src: "/bharat-snaptalk.png",
       alt: "bharat snaptalk app",
-      description: `Bharat SnapTalk App is a social media platform built with Next.js and TypeScript, allowing users to receive text, images, and videos from others by sending the unique links provided to them . The app features AWS S3 integration for secure file storage. Authentication is handled using NextAuth.js and bcrypt.js. Deployed on an AWS EC2 instance for scalability and performance`,
+      description: `Anonytalks is a social media platform built with Next.js and TypeScript, allowing users to receive text, images, and videos from others by sending the unique links provided to them . The app features AWS S3 integration for secure file storage. Authentication is handled using NextAuth.js and bcrypt.js. Deployed on an AWS EC2 instance for scalability and performance`,
       majorConcepts: "TypeScript, Next.js ,ShadCN UI ,AWS S3,EC2, NextAuth.js",
       techStacks: [
         { id: 1, name: "Next.js", image: nextjsImageSrc },
@@ -44,6 +44,7 @@ const GradientCards = () => {
         { id: 4, name: "NextAuth.js", image: "/nextauth.png" },
         { id: 5, name: "ShadCN UI", image: "/shadcn.png" },
       ],
+      demoLink: "https://anonytalks.co.in/",
       githubLink: "https://github.com/BharateshPoojary/feedback-app",
     },
     {
@@ -60,8 +61,8 @@ const GradientCards = () => {
         { id: 3, name: "Next.js", image: nextjsImageSrc },
         { id: 4, name: "Pinecone DB", image: "/pinecone.png" },
       ],
-      githubLink: "https://github.com/BharateshPoojary/llm-model",
       demoLink: "https://bharat-llm-model.vercel.app",
+      githubLink: "https://github.com/BharateshPoojary/llm-model",
     },
     {
       id: 3,
