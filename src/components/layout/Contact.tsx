@@ -18,7 +18,7 @@ const Contact = () => {
       id: 2,
       name: "Linkedin",
       image: "/LinkedIn.png",
-      src: "https://www.linkedin.com/in/bharatesh-poojary-6a1121270",
+      src: "https://linkedin.com/in/bharatesh-poojary",
     },
     {
       id: 3,
