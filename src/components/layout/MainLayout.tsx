@@ -51,7 +51,7 @@ export default function MainLayout() {
             alt="Bharatesh Photo"
             height="1000"
             width="1000"
-            className=" h-fit w-fit "
+            className=" h-1/2 w-fit"
           />
         </div>
       </div>
