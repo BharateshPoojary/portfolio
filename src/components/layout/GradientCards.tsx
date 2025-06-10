@@ -135,73 +135,69 @@ const GradientCards = () => {
           {projects.map((eachproject) => (
             <BackgroundGradient
               key={eachproject.id}
-              className="rounded-[22px] w-fit h-fit"
+              className="rounded-[22px] w-fit h-full"
             >
-              <div>
+              <div
+                className={`${
+                  CurrentTheme === "dark" ? " bg-black " : " bg-white "
+                }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[30rem] h-full p-6 border rounded-xl `}
+              >
+                <div className="text-xl font-bold text-violet-600 dark:text-white">
+                  {eachproject.title}
+                </div>
+
+                <Image
+                  src={eachproject.src}
+                  height="1000"
+                  width="1000"
+                  className="h-60 w-full object-fit rounded-xl group-hover/card:shadow-xl"
+                  alt={eachproject.alt}
+                />
+
                 <div
                   className={`${
-                    CurrentTheme === "dark" ? " bg-black " : " bg-white "
-                  }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[30rem] h-fit p-6 border rounded-xl `}
+                    CurrentTheme === "dark"
+                      ? "text-neutral-300"
+                      : "text-neutral-800"
+                  } text-sm max-w-sm mt-2 `}
                 >
-                  <div className="text-xl font-bold text-violet-600 dark:text-white">
-                    {eachproject.title}
+                  {eachproject.description}
+                </div>
+                <div
+                  className={` ${
+                    CurrentTheme === "dark"
+                      ? "text-neutral-300"
+                      : "text-neutral-800"
+                  } flex  flex-row justify-between items-center w-full text-sm`}
+                >
+                  <div className="flex-1">
+                    <span className="text-violet-400 text-xl ">Highlights</span>
+                    <br />
+                    {eachproject.majorConcepts}
                   </div>
-
-                  <Image
-                    src={eachproject.src}
-                    height="1000"
-                    width="1000"
-                    className="h-60 w-full object-fit rounded-xl group-hover/card:shadow-xl"
-                    alt={eachproject.alt}
-                  />
-
-                  <div
-                    className={`${
-                      CurrentTheme === "dark"
-                        ? "text-neutral-300"
-                        : "text-neutral-800"
-                    } text-sm max-w-sm mt-2 `}
-                  >
-                    {eachproject.description}
-                  </div>
-                  <div
-                    className={` ${
-                      CurrentTheme === "dark"
-                        ? "text-neutral-300"
-                        : "text-neutral-800"
-                    } flex  flex-row justify-between items-center w-full text-sm`}
-                  >
-                    <div className="flex-1">
-                      <span className="text-violet-400 text-xl ">
-                        Highlights
-                      </span>
-                      <br />
-                      {eachproject.majorConcepts}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-row items-center justify-center text-wrap ">
-                        <AnimatedTooltip items={eachproject.techStacks} />
-                      </div>
+                  <div className="flex-1">
+                    <div className="flex flex-row items-center justify-center text-wrap ">
+                      <AnimatedTooltip items={eachproject.techStacks} />
                     </div>
                   </div>
-                  <div className="flex justify-between items-center mt-10">
-                    {eachproject.demoLink && (
-                      <Link
-                        href={eachproject.demoLink}
-                        target="__blank"
-                        className=" md:px-6 md:py-4  rounded-xl text-sm font-bold  text-white bg-violet-600 px-4 py-4 mx-auto"
-                      >
-                        View Live App
-                      </Link>
-                    )}
+                </div>
+                <div className="flex justify-between items-center mt-10">
+                  {eachproject.demoLink && (
                     <Link
-                      href={eachproject.githubLink}
+                      href={eachproject.demoLink}
                       target="__blank"
-                      className=" flex justify-evenly items-center px-4 py-3 md:px-6 md:py-4  rounded-xl bg-black border text-white text-xs font-bold p-2 mx-auto"
+                      className=" md:px-6 md:py-4  rounded-xl text-sm font-bold  text-white bg-violet-600 px-4 py-4 mx-auto"
                     >
-                      View Code On <Github />
+                      View Live App
                     </Link>
-                  </div>
+                  )}
+                  <Link
+                    href={eachproject.githubLink}
+                    target="__blank"
+                    className=" flex justify-evenly items-center px-4 py-3 md:px-6 md:py-4  rounded-xl bg-black border text-white text-xs font-bold p-2 mx-auto"
+                  >
+                    View Code On <Github />
+                  </Link>
                 </div>
               </div>
             </BackgroundGradient>
