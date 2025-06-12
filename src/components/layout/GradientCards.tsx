@@ -135,12 +135,12 @@ const GradientCards = () => {
           {projects.map((eachproject) => (
             <BackgroundGradient
               key={eachproject.id}
-              className="rounded-[22px] w-fit h-full"
+              className="rounded-[22px] h-full"
             >
               <div
                 className={`${
                   CurrentTheme === "dark" ? " bg-black " : " bg-white "
-                }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[30rem] h-full p-6 border rounded-xl `}
+                }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full p-6 border rounded-xl `}
               >
                 <div className="text-xl font-bold text-violet-600 dark:text-white">
                   {eachproject.title}
