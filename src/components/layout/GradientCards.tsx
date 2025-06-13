@@ -52,16 +52,17 @@ const GradientCards = () => {
       title: "LLM based ChatBot",
       src: "/bharat-llm-model.png",
       alt: "bharat llm based chatbot",
-      description: `Developed an LLM-powered chatbot using Next.js and TypeScript, integrated with Google Gemini AI via LangChain for natural language processing and also used vercel AI SDK for efficient integration with LLM .Utilized Pinecone for vector storage and fast similarity search to enable contextual conversations.Enabled PDF parsing and interaction using pdf-parse,allowing the chatbot to extract and process information from uploaded documents`,
+      description: `Developed an LLM-powered chatbot using Next.js and TypeScript, integrated with Google Gemini AI via LangChain for natural language processing and also used vercel AI SDK for efficient integration with LLM .Utilized Pinecone for vector storage and fast similarity search to enable contextual conversations.Enabled PDF parsing and interaction using pdf-parse,allowing the chatbot to extract and process information from uploaded documents also used Clerk for seamless authentication`,
       majorConcepts:
-        "GeminiAI ,Langchain ,Pinecone ,TypeScript ,Next.js ,ShadCN UI",
+        "GeminiAI ,Langchain ,Pinecone ,TypeScript ,Next.js ,ShadCN UI , Clerk",
       techStacks: [
         { id: 1, name: "Gemini AI", image: "/gemini-logo.webp" },
         { id: 2, name: "Langchain", image: "/langchain.jpg" },
         { id: 3, name: "Next.js", image: nextjsImageSrc },
         { id: 4, name: "Pinecone DB", image: "/pinecone.png" },
+        { id: 5, name: "Clerk ", image: "/Clerk.jpg" },
       ],
-      demoLink: "https://bharat-llm-model.vercel.app",
+      demoLink: "https://pdf-summarizer.anonytalks.co.in",
       githubLink: "https://github.com/BharateshPoojary/llm-model",
     },
     {
@@ -69,7 +70,7 @@ const GradientCards = () => {
       title: "My Portfolio",
       src: "/bharat-portfolio.png",
       alt: "my Portfolio",
-      description: `Built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI, this portfolio is a showcase of my skills in full-stack development using the MERN stack. It features a sleek, responsive design with smooth UI interactions, highlighting my expertise in React, Node.js, Express, and MongoDB. `,
+      description: `Built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI, this portfolio is a showcase of my skills in full-stack development using the MERN stack. It features a sleek, responsive design with smooth UI interactions, highlighting my expertise in React, Node.js, Express, and MongoDB. I have also used Resend for sending the messages of users. `,
       majorConcepts: "TypeScript, Next.js and libraries like Aceternity UI",
       techStacks: [
         { id: 1, name: "Next.js", image: nextjsImageSrc },
@@ -77,6 +78,7 @@ const GradientCards = () => {
         { id: 3, name: "Tailwind", image: "/TailwindCSS.png" },
         { id: 4, name: "Aceternity", image: "/Aceternity.png" },
         { id: 5, name: "zustand", image: "/zustand.png" },
+        { id: 6, name: "Resend", image: "/Resend.jpg" },
       ],
       demoLink: "https://bharatesh-portfolio.vercel.app/",
       githubLink: "https://github.com/BharateshPoojary/portfolio",

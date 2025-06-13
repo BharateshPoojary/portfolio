@@ -21,7 +21,12 @@ import { Textarea } from "../ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, MessageCircle, Send } from "lucide-react";
 import { BackgroundGradient } from "../ui/background-gradient";
-
+import axios, { AxiosError } from "axios";
+import toast from "react-hot-toast";
+import { useState } from "react";
+export type ApiResponse = {
+  id: string;
+};
 const Contact = () => {
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -30,7 +35,7 @@ const Contact = () => {
       message: "",
     },
   });
-
+  const [isSending, setIsSending] = useState<boolean>(false);
   const { CurrentTheme } = useToggleThemeStore();
   const githubImageSrc =
     CurrentTheme === "dark" ? "/github-white.png" : "/GitHub.png";
@@ -59,9 +64,28 @@ const Contact = () => {
     },
   ];
 
-  const onSubmit = (data: z.infer<typeof contactSchema>) => {
-    console.log("Data", data);
-    //api call to do
+  const onSubmit = async (data: z.infer<typeof contactSchema>) => {
+    try {
+      setIsSending(true);
+      console.log("Data", data);
+      const response = await axios.post<ApiResponse>("/api/send", {
+        ...data,
+      });
+      if (response.data.id) {
+        toast.success("Email sent successfully");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message);
+      } else {
+        toast.error("Something went wrong ");
+      }
+    } finally {
+      form.reset();
+      setIsSending(false);
+    }
   };
 
   return (
@@ -155,7 +179,7 @@ const Contact = () => {
                       name="userName"
                       render={({ field }) => (
                         <FormItem className="space-y-2">
-                          <FormLabel className="text-sm font-medium text-foreground">
+                          <FormLabel className="text-lg font-medium text-foreground">
                             Your Name
                           </FormLabel>
                           <FormControl>
@@ -175,13 +199,13 @@ const Contact = () => {
                       name="message"
                       render={({ field }) => (
                         <FormItem className="space-y-2">
-                          <FormLabel className="text-sm font-medium text-foreground">
+                          <FormLabel className="text-lg font-medium text-foreground">
                             Your Message
                           </FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Tell me about your project or just say hello..."
-                              className="min-h-32 border-2 focus:border-violet-500 transition-colors resize-none"
+                              className="min-h-32 border-2 focus:border-violet-500 transition-colors resize-none "
                               {...field}
                             />
                           </FormControl>
@@ -191,12 +215,13 @@ const Contact = () => {
                     />
 
                     <Button
+                      disabled={isSending}
                       type="submit"
                       size="lg"
                       className="w-full h-12 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
                     >
                       <Send className="w-4 h-4 mr-2" />
-                      Send Message
+                      {isSending ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </Form>
