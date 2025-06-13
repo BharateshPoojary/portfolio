@@ -80,7 +80,7 @@ export default function MainLayout() {
         >
           <PinContainer
             title="Click To View Resume"
-            href="https://bharat-miscellaneous-bucket.s3.ap-south-1.amazonaws.com/Motivated+and+results-driven+Business+School+graduate+seeking+a+challenging+position+within+a+large+organisation+as+a+Business+Analyst+or+Project+Manager.+Offering+a+strong+foundation+in+business++(5).pdf"
+            href={process.env.NEXT_PUBLIC_RESUME_S3_URL}
           >
             <div
               className="flex basis-full flex-col tracking-tight sm:basis-1/2 w-[17rem] h-[24rem] rounded-xs"
