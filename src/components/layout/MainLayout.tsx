@@ -38,7 +38,7 @@ export default function MainLayout() {
       <div className="md:flex md:h-screen items-center justify-center">
         <div className="h-screen flex items-center justify-center">
           <BlurText
-            text="This is my portfolio"
+            text="Welcome to portfolio"
             delay={150}
             animateBy="words"
             direction="top"
