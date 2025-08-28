@@ -5,18 +5,17 @@ const TimeLine = () => {
   const { CurrentTheme } = useToggleThemeStore();
   const data = [
     {
-      title: "Mar 2025-Present",
+      title: "Apr 2025-Present",
       content: (
         <div>
           <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
             Vighnotech
           </p>
           <p
-            className={`${
-              CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
-            } text-2xl font-normal mb-8`}
+            className={`${CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
+              } text-2xl font-normal mb-8`}
           >
-            Software Development Engineer Intern
+            Associate Software Engineer
           </p>
         </div>
       ),
@@ -29,11 +28,10 @@ const TimeLine = () => {
             Lazytech Infotech Solutions
           </p>
           <p
-            className={`${
-              CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
-            } text-2xl font-normal mb-8`}
+            className={`${CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
+              } text-2xl font-normal mb-8`}
           >
-            Software Developer Intern
+            Frontend Developer Intern
           </p>
         </div>
       ),
@@ -43,15 +41,14 @@ const TimeLine = () => {
       content: (
         <div>
           <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
-            Bachelor of Computer Application
+            Bachelor's in Computer 
           </p>
-          <p
-            className={`${
-              CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
-            } text-2xl font-normal mb-8`}
+          {/* <p
+            className={`${CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
+              } text-2xl font-normal mb-8`}
           >
             Shri Mahaveera College
-          </p>
+          </p> */}
         </div>
       ),
     },

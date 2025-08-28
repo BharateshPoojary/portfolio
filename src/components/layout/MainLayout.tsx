@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Navbar from "./Navbar";
 import { PinContainer } from "../ui/3d-pin";
-import { useInViewStore } from "@/store/sidebarStore";
+import { useInViewStore, useToggleThemeStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
 import { useInView } from "react-intersection-observer";
 import GradientCards from "./GradientCards";
@@ -12,6 +12,7 @@ import BlurText from "../ui/BlurText";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Image from "next/image";
+import { Button } from "../ui/button";
 export default function MainLayout() {
   const AboutRef = useRef(null);
   const TimeLineRef = useRef(null);
@@ -19,6 +20,7 @@ export default function MainLayout() {
   const ContactRef = useRef(null);
   const Resume: string = "/blurred-resume.png";
   const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
+  const { CurrentTheme } = useToggleThemeStore();
   const { setIsInView } = useInViewStore();
   const { ref: pinRef, inView } = useInView({
     threshold: 0.5,
@@ -38,14 +40,14 @@ export default function MainLayout() {
       <div className="md:flex md:h-screen items-center justify-center">
         <div className="h-screen flex items-center justify-center">
           <BlurText
-            text="Welcome to portfolio"
+            text="Frontend Engineer Turning Designs into High-Performance Applications"
             delay={150}
             animateBy="words"
             direction="top"
-            className="lg:text-8xl md:text-7xl text-6xl   "
+            className=" mx-36 lg:text-7xl md:text-6xl text-5xl"
           />
         </div>
-        <div className="h-fit flex items-center justify-center">
+        {/* <div className="h-fit flex items-center justify-center">
           <Image
             src="/Bharat.png"
             alt="Bharatesh Photo"
@@ -53,28 +55,33 @@ export default function MainLayout() {
             width="1000"
             className=" h-fit w-fit"
           />
-        </div>
+        </div> */}
       </div>
       <div
         ref={AboutRef}
         className="max-w-7xl mx-auto flex md:flex-row flex-col max-[523px]:mt-[12vw] max-[345px]:mt-[26vw] max-[302px]:mt-[30vw]"
       >
         <div className="h-[28rem] flex flex-col justify-center items-center px-4 w-full">
-          <div className="text-4xl  font-normal text-neutral-600 dark:text-neutral-400">
-            <FlipWords words={words} />
+          <div className={`text-4xl  font-normal ${CurrentTheme === "dark" ? "text-white" : "text-black"}`}>
+            {/* <FlipWords words={words} /> */}
+            <span className="text-violet-700"> Hi,I am Bharatesh Poojary
+            </span>
             <div>
-              passionate about developing web applications using
+              I craft modern, high-performing applications with React & Next.js.
               <div className="flex sm:flex-row flex-col justify-start items-start space-x-2">
-                <div className="flex">
+                {/* <div className="flex">
                   <AnimatedTooltipPreview />
-                </div>
-                <div className="text-violet-600 font-bold text-5xl">stack.</div>
+                </div> */}
+                {/* <div className="text-violet-600 font-bold text-5xl">stack.</div> */}
+                <Button className="px-8 py-5 my-3 bg-violet-800 hover:bg-violet-900 text-white rounded-full"
+                  onClick={() => window.open("https://drive.google.com/file/d/18xseCsAoy52rMo3k65GylWRJEViQ3MLX/view?usp=drivesdk")}
+                >My Resume</Button>
               </div>
             </div>
           </div>
         </div>
-        <div className="md:hidden flex flex-col justify-center items-center  w-full min-w-full"></div>
-        <div
+        {/* <div className="md:hidden flex flex-col justify-center items-center  w-full min-w-full"></div> */}
+        {/* <div
           className=" h-[30rem] md:h-[42rem] w-full flex  justify-center items-center px-2"
           ref={pinRef}
         >
@@ -95,6 +102,15 @@ export default function MainLayout() {
               />
             </div>
           </PinContainer>
+        </div> */}
+        <div className="h-fit flex items-center justify-center">
+          <Image
+            src="/purple_image-removebg-preview.png"
+            alt="About Image Photo"
+            height="1000"
+            width="1000"
+            className=" h-fit w-fit"
+          />
         </div>
       </div>
       <div ref={TimeLineRef}>

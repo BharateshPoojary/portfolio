@@ -1,18 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
 import { useToggleThemeStore } from "@/store/sidebarStore";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { Span } from "next/dist/trace";
 const GradientCards = () => {
   const { CurrentTheme } = useToggleThemeStore();
+  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({})
   const expressImageSrc =
     CurrentTheme === "dark" ? "/Express-white.png" : "/Express.png";
   const nextjsImageSrc =
     CurrentTheme === "dark" ? "/nextjs-white.png" : "/Next.js.png";
-
+  const toggleExpanded = (id: number) => {
+    setExpanded(prev => ({ ...prev, [id]: !prev[id] }))
+  }
   interface TechStack {
     id: number;
     name: string;
@@ -65,24 +70,24 @@ const GradientCards = () => {
       demoLink: "https://pdf-summarizer.anonytalks.co.in",
       githubLink: "https://github.com/BharateshPoojary/llm-model",
     },
-    {
-      id: 3,
-      title: "My Portfolio",
-      src: "/bharat-portfolio.png",
-      alt: "my Portfolio",
-      description: `Built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI, this portfolio is a showcase of my skills in full-stack development using the MERN stack. It features a sleek, responsive design with smooth UI interactions, highlighting my expertise in React, Node.js, Express, and MongoDB. I have also used Resend for sending the messages of users. `,
-      majorConcepts: "TypeScript, Next.js and libraries like Aceternity UI",
-      techStacks: [
-        { id: 1, name: "Next.js", image: nextjsImageSrc },
-        { id: 2, name: "Typescript", image: "/TypeScript.png" },
-        { id: 3, name: "Tailwind", image: "/TailwindCSS.png" },
-        { id: 4, name: "Aceternity", image: "/Aceternity.png" },
-        { id: 5, name: "zustand", image: "/zustand.png" },
-        { id: 6, name: "Resend", image: "/Resend.jpg" },
-      ],
-      demoLink: "https://bharatesh-portfolio.vercel.app/",
-      githubLink: "https://github.com/BharateshPoojary/portfolio",
-    },
+    // {
+    //   id: 3,
+    //   title: "My Portfolio",
+    //   src: "/bharat-portfolio.png",
+    //   alt: "my Portfolio",
+    //   description: `Built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI, this portfolio is a showcase of my skills in full-stack development using the MERN stack. It features a sleek, responsive design with smooth UI interactions, highlighting my expertise in React, Node.js, Express, and MongoDB. I have also used Resend for sending the messages of users. `,
+    //   majorConcepts: "TypeScript, Next.js and libraries like Aceternity UI",
+    //   techStacks: [
+    //     { id: 1, name: "Next.js", image: nextjsImageSrc },
+    //     { id: 2, name: "Typescript", image: "/TypeScript.png" },
+    //     { id: 3, name: "Tailwind", image: "/TailwindCSS.png" },
+    //     { id: 4, name: "Aceternity", image: "/Aceternity.png" },
+    //     { id: 5, name: "zustand", image: "/zustand.png" },
+    //     { id: 6, name: "Resend", image: "/Resend.jpg" },
+    //   ],
+    //   demoLink: "https://bharatesh-portfolio.vercel.app/",
+    //   githubLink: "https://github.com/BharateshPoojary/portfolio",
+    // },
     {
       id: 4,
       title: "Bharat Note App",
@@ -133,62 +138,70 @@ const GradientCards = () => {
         </h2>
       </div>
       <div className="max-w-8xl mx-auto px-2 md:px-10 lg:px-15">
-        <div className="grid  [@media_(min-width:1534px)]:grid-cols-3  [@media_(min-width:1016px)]:grid-cols-2 grid-cols-1   gap-4 ">
+        <div className="grid  [@media_(min-width:1534px)]:grid-cols-3  [@media_(min-width:1016px)]:grid-cols-3 grid-cols-1   gap-4 ">
           {projects.map((eachproject) => (
-            <BackgroundGradient
+            // <BackgroundGradient key={eachproject.id} >
+            <Card
               key={eachproject.id}
-              className="rounded-[22px] h-full"
+              className={`${CurrentTheme === "dark" ? "bg-black" : "bg-white"
+                } flex  flex-col justify-between items-center p-3 dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-fit rounded-xl  border-2 border-gray-400`}
             >
-              <div
-                className={`${
-                  CurrentTheme === "dark" ? " bg-black " : " bg-white "
-                }   dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full p-6 border rounded-xl `}
-              >
-                <div className="text-xl font-bold text-violet-600 dark:text-white">
-                  {eachproject.title}
-                </div>
 
+              <div>
+
+
+                <CardHeader className="p-6 pb-4">
+                  <div className="text-xl font-bold text-violet-600 dark:text-white">{eachproject.title}</div>
+                </CardHeader>
+
+                {/* <CardContent className="px-6 pb-4 space-y-4"> */}
                 <Image
-                  src={eachproject.src}
+                  src={eachproject.src || "/placeholder.svg"}
                   height="1000"
                   width="1000"
                   className="h-60 w-full object-fit rounded-xl group-hover/card:shadow-xl"
                   alt={eachproject.alt}
                 />
 
-                <div
-                  className={`${
-                    CurrentTheme === "dark"
-                      ? "text-neutral-300"
-                      : "text-neutral-800"
-                  } text-sm max-w-sm mt-2 `}
-                >
-                  {eachproject.description}
+                <div className={`${CurrentTheme === "dark" ? "text-neutral-300" : "text-neutral-800"} text-sm `}>
+                  {expanded[eachproject.id]
+                    ? eachproject.description
+                    : `${eachproject.description.slice(0, 100)}...`}
+                  <span onClick={() => toggleExpanded(eachproject.id)} className="cursor-pointer  text-violet-800">
+                    show {expanded[eachproject.id] ? "less" : "more"}
+                  </span>
                 </div>
+
+              </div>
+              <div>
+
+
                 <div
-                  className={` ${
-                    CurrentTheme === "dark"
-                      ? "text-neutral-300"
-                      : "text-neutral-800"
-                  } flex  flex-row justify-between items-center w-full text-sm`}
+                  className={`${CurrentTheme === "dark" ? "text-neutral-300" : "text-neutral-800"
+                    } flex flex-row justify-between items-center w-full text-sm`}
                 >
                   <div className="flex-1">
-                    <span className="text-violet-400 text-xl ">Highlights</span>
+                    <span className="text-violet-400 text-xl">Tools and Tech Stack</span>
                     <br />
-                    {eachproject.majorConcepts}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-row items-center justify-center text-wrap ">
+                    <div className="flex flex-row items-center justify-center text-wrap">
                       <AnimatedTooltip items={eachproject.techStacks} />
                     </div>
                   </div>
+                  {/* <div className="flex-1">
+                      <div className="flex flex-row items-center justify-center text-wrap">
+                        <AnimatedTooltip items={eachproject.techStacks} />
+                      </div>
+                    </div> */}
                 </div>
-                <div className="flex justify-between items-center mt-10">
+                {/* </CardContent> */}
+
+                <CardFooter className="flex justify-between items-center w-full m-3">
+
                   {eachproject.demoLink && (
                     <Link
                       href={eachproject.demoLink}
                       target="__blank"
-                      className=" md:px-6 md:py-4  rounded-xl text-sm font-bold  text-white bg-violet-600 px-4 py-4 mx-auto"
+                      className="md:px-6 md:py-4 rounded-xl text-sm font-bold text-white bg-violet-600 px-4 py-4 mx-auto"
                     >
                       View Live App
                     </Link>
@@ -196,17 +209,19 @@ const GradientCards = () => {
                   <Link
                     href={eachproject.githubLink}
                     target="__blank"
-                    className=" flex justify-evenly items-center px-4 py-3 md:px-6 md:py-4  rounded-xl bg-black border text-white text-xs font-bold p-2 mx-auto"
+                    className="flex justify-evenly items-center px-4 py-3 md:px-6 md:py-4 rounded-xl bg-black border text-white text-xs font-bold p-2 mx-auto"
                   >
                     View Code On <Github />
                   </Link>
-                </div>
+
+                </CardFooter>
               </div>
-            </BackgroundGradient>
+            </Card>
+            // </BackgroundGradient>
           ))}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

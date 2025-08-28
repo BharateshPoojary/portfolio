@@ -90,9 +90,8 @@ const Contact = () => {
 
   return (
     <section
-      className={`min-h-screen  ${
-        CurrentTheme === "dark" ? "bg-dark " : "bg-white"
-      }`}
+      className={`min-h-screen  ${CurrentTheme === "dark" ? "bg-dark " : "bg-white"
+        }`}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         {/* Header Section */}
@@ -102,7 +101,7 @@ const Contact = () => {
             Get In Touch
           </div>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-violet-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-violet-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">
             Contact
           </h2>
 
@@ -155,12 +154,12 @@ const Contact = () => {
         {/* Contact Form Section */}
         <div className="max-w-2xl  mx-auto">
           <BackgroundGradient className="rounded-[22px] ">
-            <Card className="shadow-2xl border-0 w-full">
+            <Card className="shadow-2xl border-0 w-full bg-black">
               <CardHeader className="text-center pb-8 ">
                 <div className="mx-auto w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center mb-4">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className="text-2xl font-bold">
+                <CardTitle className="text-2xl font-bold text-white">
                   Send me a message
                 </CardTitle>
                 <p className="text-muted-foreground">
