@@ -7,7 +7,8 @@ import { Github } from "lucide-react";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
 import { useToggleThemeStore } from "@/store/sidebarStore";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import { Span } from "next/dist/trace";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 const GradientCards = () => {
   const { CurrentTheme } = useToggleThemeStore();
   const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({})
@@ -138,86 +139,107 @@ const GradientCards = () => {
         </h2>
       </div>
       <div className="max-w-8xl mx-auto px-2 md:px-10 lg:px-15">
-        <div className="grid  [@media_(min-width:1534px)]:grid-cols-3  [@media_(min-width:1016px)]:grid-cols-3 grid-cols-1   gap-4 ">
+        <div className="grid  [@media_(min-width:900px)]:grid-cols-3  [@media_(min-width:611px)]:grid-cols-2 grid-cols-1   gap-4 ">
           {projects.map((eachproject) => (
-            // <BackgroundGradient key={eachproject.id} >
-            <Card
-              key={eachproject.id}
-              className={`${CurrentTheme === "dark" ? "bg-black" : "bg-white"
-                } flex  flex-col justify-between items-center p-3 dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-fit rounded-xl  border-2 border-gray-400`}
-            >
-
-              <div>
-
-
-                <CardHeader className="p-6 pb-4">
-                  <div className="text-xl font-bold text-violet-600 dark:text-white">{eachproject.title}</div>
+            <BackgroundGradient key={eachproject.id} >
+              <Card
+                className={cn(
+                  "w-full rounded-xl border transition-shadow h-fit",
+                  CurrentTheme === "dark" ? "bg-black/90 border-white/15 hover:shadow-xl" : "bg-white border-black/10 hover:shadow-lg",
+                )}
+              >
+                <CardHeader className="p-5 pb-3">
+                  <h3 className={cn("text-balance text-lg md:text-xl font-semibold", CurrentTheme === "dark" ? "text-white" : "text-gray-900")}>
+                    {eachproject.title}
+                  </h3>
                 </CardHeader>
 
-                {/* <CardContent className="px-6 pb-4 space-y-4"> */}
-                <Image
-                  src={eachproject.src || "/placeholder.svg"}
-                  height="1000"
-                  width="1000"
-                  className="h-60 w-full object-fit rounded-xl group-hover/card:shadow-xl"
-                  alt={eachproject.alt}
-                />
+                <CardContent className="px-5 pb-4">
+                  <div className="overflow-hidden rounded-lg">
+                    <Image
+                      src={eachproject.src || "/placeholder.svg?height=600&width=1200&query=project%20screenshot"}
+                      width={1200}
+                      height={600}
+                      alt={eachproject.alt || "Project preview"}
+                      className="h-fit w-fit object-contain"
+                    />
+                  </div>
 
-                <div className={`${CurrentTheme === "dark" ? "text-neutral-300" : "text-neutral-800"} text-sm `}>
-                  {expanded[eachproject.id]
-                    ? eachproject.description
-                    : `${eachproject.description.slice(0, 100)}...`}
-                  <span onClick={() => toggleExpanded(eachproject.id)} className="cursor-pointer  text-violet-800">
-                    show {expanded[eachproject.id] ? "less" : "more"}
-                  </span>
-                </div>
+                  {/* Description with 'show more/less' */}
+                  <p
+                    className={cn("mt-3 text-sm leading-relaxed", CurrentTheme === "dark" ? "text-neutral-300" : "text-neutral-800")}
+                  >
+                    {expanded[eachproject.id] ? eachproject.description : `${eachproject.description.slice(0, 120)}... `}
 
-              </div>
-              <div>
+                    <Button
+                      onClick={() => toggleExpanded(eachproject.id)}
+                      variant={"ghost"}
+                      className={cn(
+                        "font-semibold  ",
+                        CurrentTheme === "dark" ? "text-violet-300 hover:bg-black hover:text-violet-400" : "text-violet-700 ",
+                      )}
+                    >
+                      {expanded[eachproject.id] ? "show less" : "show more"}
+                    </Button>
+                  </p>
 
-
-                <div
-                  className={`${CurrentTheme === "dark" ? "text-neutral-300" : "text-neutral-800"
-                    } flex flex-row justify-between items-center w-full text-sm`}
-                >
-                  <div className="flex-1">
-                    <span className="text-violet-400 text-xl">Tools and Tech Stack</span>
-                    <br />
-                    <div className="flex flex-row items-center justify-center text-wrap">
+                  {/* Tools & Tech */}
+                  <section className="mt-4">
+                    <div className={cn("text-sm font-medium", CurrentTheme === "dark" ? "text-neutral-200" : "text-neutral-900")}>
+                      Tools and Tech Stack
+                    </div>
+                    <div className="flex mt-2">
                       <AnimatedTooltip items={eachproject.techStacks} />
                     </div>
+                  </section>
+                </CardContent>
+
+                <CardFooter >
+                  {/* Responsive actions:
+            - mobile: full-width stacked with gaps
+            - sm+: two columns with equal width
+            - md+: align nicely with natural width
+        */}
+                  <div className="w-full">
+                    <div className="grid gap-3 sm:grid-cols-2 md:flex md:items-center md:justify-start">
+                      {eachproject.demoLink && (
+                        <Button
+                          variant={"ghost"}
+                          className={cn(
+                            "font-semibold underline-offset-4 hover:bg-slate-100",
+                            CurrentTheme === "dark" ? "text-violet-300 hover:bg-black hover:text-violet-400" : "text-violet-700",
+                          )}
+                        >
+                          <Link href={eachproject.demoLink} target="_blank" rel="noreferrer noopener" aria-label="Open live app">
+                            View Live App
+                          </Link>
+                        </Button>
+                      )}
+
+                      <Button
+                        asChild
+                        variant={CurrentTheme === "dark" ? "secondary" : "outline"}
+                        className={cn(
+                          "w-full sm:w-full md:w-auto font-semibold",
+                          CurrentTheme === "dark" ? "bg-white text-black hover:bg-white/90" : "",
+                        )}
+                      >
+                        <Link
+                          href={eachproject.githubLink}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="flex items-center justify-center gap-2"
+                          aria-label="Open GitHub repository"
+                        >
+                          <Github className="h-4 w-4" aria-hidden="true" />
+                          <span>View Code</span>
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
-                  {/* <div className="flex-1">
-                      <div className="flex flex-row items-center justify-center text-wrap">
-                        <AnimatedTooltip items={eachproject.techStacks} />
-                      </div>
-                    </div> */}
-                </div>
-                {/* </CardContent> */}
-
-                <CardFooter className="flex justify-between items-center w-full m-3">
-
-                  {eachproject.demoLink && (
-                    <Link
-                      href={eachproject.demoLink}
-                      target="__blank"
-                      className="md:px-6 md:py-4 rounded-xl text-sm font-bold text-white bg-violet-600 px-4 py-4 mx-auto"
-                    >
-                      View Live App
-                    </Link>
-                  )}
-                  <Link
-                    href={eachproject.githubLink}
-                    target="__blank"
-                    className="flex justify-evenly items-center px-4 py-3 md:px-6 md:py-4 rounded-xl bg-black border text-white text-xs font-bold p-2 mx-auto"
-                  >
-                    View Code On <Github />
-                  </Link>
-
                 </CardFooter>
-              </div>
-            </Card>
-            // </BackgroundGradient>
+              </Card>
+            </BackgroundGradient>
           ))}
         </div>
       </div>

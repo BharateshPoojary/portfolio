@@ -1,13 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { FlipWords } from "@/components/ui/flip-words";
+import React, {  useRef } from "react";
 import Navbar from "./Navbar";
-import { PinContainer } from "../ui/3d-pin";
-import { useInViewStore, useToggleThemeStore } from "@/store/sidebarStore";
+import {  useToggleThemeStore } from "@/store/sidebarStore";
 import TimeLine from "./TimeLine";
-import { useInView } from "react-intersection-observer";
+
 import GradientCards from "./GradientCards";
-import { AnimatedTooltipPreview } from "./AnimatedTooltipPreview";
 import BlurText from "../ui/BlurText";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -18,17 +15,9 @@ export default function MainLayout() {
   const TimeLineRef = useRef(null);
   const ProjectsRef = useRef(null);
   const ContactRef = useRef(null);
-  const Resume: string = "/blurred-resume.png";
-  const words = ["Hi,I am Bharatesh Poojary", " I am a Full Stack Developer"];
+
   const { CurrentTheme } = useToggleThemeStore();
-  const { setIsInView } = useInViewStore();
-  const { ref: pinRef, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-  });
-  useEffect(() => {
-    setIsInView(inView);
-  }, [setIsInView, inView]);
+
   return (
     <>
       <Navbar

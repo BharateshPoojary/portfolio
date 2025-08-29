@@ -13,7 +13,8 @@ const Footer = () => {
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <hr className="my-6 border-violet-700 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
-          <span className="block text-lg text-white text-center dark:text-gray-400">
+          <span className={`block text-lg ${CurrentTheme === "dark" ? "text-white " : "text-black"
+          } text-center dark:text-gray-400`}>
             <span>
               © 2025 &nbsp;
               <Link

@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 import { Textarea } from "../ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MessageCircle, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { BackgroundGradient } from "../ui/background-gradient";
 import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
@@ -95,17 +95,19 @@ const Contact = () => {
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 text-sm font-medium mb-6">
+        <div className=" mb-16">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 text-sm font-medium mb-6">
             <MessageCircle className="w-4 h-4" />
             Get In Touch
+          </div> */}
+
+          <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+            <h2 className="text-4xl md:text-6xl mb-4 text-violet-500 dark:text-white max-w-4xl">
+              Contact
+            </h2>
           </div>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-violet-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">
-            Contact
-          </h2>
-
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className=" text-center text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Let&apos;s connect and create something{" "}
             <span className="text-violet-600 dark:text-violet-400 font-semibold">
               great
@@ -125,7 +127,7 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Card className="w-48 h-24 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 hover:border-violet-200 dark:hover:border-violet-800">
+                <Card className={`w-48 h-24 hover:shadow-lg transition-all duration-300 hover:-translate-y-1  ${CurrentTheme === "dark" ? "bg-black " : "bg-white "}`}>
                   <CardContent className="flex items-center gap-4 p-4 h-full">
                     <div className="relative">
                       <Image
@@ -137,7 +139,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-sm text-foreground">
+                      <h4 className={`font-semibold text-sm text-foreground ${CurrentTheme === "dark" ? "text-white":"text-black"}`}>
                         {social.name}
                       </h4>
                       <p className="text-xs text-muted-foreground truncate">
@@ -154,12 +156,12 @@ const Contact = () => {
         {/* Contact Form Section */}
         <div className="max-w-2xl  mx-auto">
           <BackgroundGradient className="rounded-[22px] ">
-            <Card className="shadow-2xl border-0 w-full bg-black">
+            <Card className={`shadow-2xl border-0 w-full ${CurrentTheme === "dark" ? "bg-black" :"bg-white"}`}>
               <CardHeader className="text-center pb-8 ">
                 <div className="mx-auto w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center mb-4">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-white">
+                <CardTitle className={`text-2xl font-bold ${CurrentTheme === "dark" ? "text-white":"text-black"}`}>
                   Send me a message
                 </CardTitle>
                 <p className="text-muted-foreground">

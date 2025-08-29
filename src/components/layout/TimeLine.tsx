@@ -41,7 +41,7 @@ const TimeLine = () => {
       content: (
         <div>
           <p className="text-violet-500 dark:text-neutral-200 text-3xl font-normal mb-4">
-            Bachelor's in Computer 
+            Bachelor&apos;s in Computer Application
           </p>
           {/* <p
             className={`${CurrentTheme === "dark" ? "text-neutral-100" : "text-neutral-800"
