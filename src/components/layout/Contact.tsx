@@ -139,7 +139,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className={`font-semibold text-sm text-foreground ${CurrentTheme === "dark" ? "text-white":"text-black"}`}>
+                      <h4 className={`font-semibold text-sm text-foreground ${CurrentTheme === "dark" ? "text-white" : "text-black"}`}>
                         {social.name}
                       </h4>
                       <p className="text-xs text-muted-foreground truncate">
@@ -156,12 +156,12 @@ const Contact = () => {
         {/* Contact Form Section */}
         <div className="max-w-2xl  mx-auto">
           <BackgroundGradient className="rounded-[22px] ">
-            <Card className={`shadow-2xl border-0 w-full ${CurrentTheme === "dark" ? "bg-black" :"bg-white"}`}>
+            <Card className={`shadow-2xl border-0 w-full ${CurrentTheme === "dark" ? "bg-black" : "bg-white"}`}>
               <CardHeader className="text-center pb-8 ">
                 <div className="mx-auto w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center mb-4">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className={`text-2xl font-bold ${CurrentTheme === "dark" ? "text-white":"text-black"}`}>
+                <CardTitle className={`text-2xl font-bold ${CurrentTheme === "dark" ? "text-white" : "text-black"}`}>
                   Send me a message
                 </CardTitle>
                 <p className="text-muted-foreground">
@@ -186,7 +186,7 @@ const Contact = () => {
                           <FormControl>
                             <Input
                               placeholder="Enter your name"
-                              className="h-12 border-2 focus:border-violet-500 transition-colors"
+                              className={`h-12 border-2 focus:border-violet-500 transition-colors ${CurrentTheme === "dark" ? "text-white" : "text-black"}`}
                               {...field}
                             />
                           </FormControl>
@@ -206,7 +206,7 @@ const Contact = () => {
                           <FormControl>
                             <Textarea
                               placeholder="Tell me about your project or just say hello..."
-                              className="min-h-32 border-2 focus:border-violet-500 transition-colors resize-none "
+                              className={`min-h-32 border-2 focus:border-violet-500 transition-colors resize-none ${CurrentTheme === "dark" ? "text-white" : "text-black"}`}
                               {...field}
                             />
                           </FormControl>
